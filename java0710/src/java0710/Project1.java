@@ -82,13 +82,13 @@ public class Project1 {
 					}
 					System.out.println();
 				}
-				System.out.println("프로그램 종료");
+				System.out.println("예금/출금 프로그램 종료");
 				break;
 			case 4:
 				run = false;
 				break;
 			}
 		}
-		System.out.println("프로그램 종료");
+		System.out.println("프로그램 전체 종료");
 	}
 }
