@@ -56,7 +56,6 @@ public class Project1 {
 				// 예금 출금
 				System.out.println("예금 출금");
 				boolean run2 = true;
-				int balance = 0;
 				
 				while (run2) {
 					System.out.println("-------------------------------------");
@@ -67,15 +66,15 @@ public class Project1 {
 					switch (menuNum2) {
 					case 1:
 						System.out.print("예금액> ");
-						balance += Integer.parseInt(scanner.nextLine());
+						member.balance += Integer.parseInt(scanner.nextLine());
 						break;
 					case 2:
 						System.out.print("출금액> ");
-						balance -= Integer.parseInt(scanner.nextLine());
+						member.balance -= Integer.parseInt(scanner.nextLine());
 						break;
 					case 3:
 						System.out.print("잔고> ");
-						System.out.println(balance);
+						System.out.println(member.balance);
 						break;
 					case 4:
 						run2 = false;
