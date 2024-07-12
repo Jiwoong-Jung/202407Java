@@ -1,4 +1,4 @@
-package project1;
+package project1_1;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -10,12 +10,13 @@ import java.util.Scanner;
 public class Project1 {
 
 	public static void main(String[] args) {
-		Member[] list = new Member[10];
-		int memCnt = 0;
+//		Member[] list = null;
+		Member[] list = new Member[10];  // 총 회원수 10명으로 제한
+		int memCnt = 0;   // 회원수
 		try (FileInputStream fis = new FileInputStream("c:\\temp\\members.dat");
 	             ObjectInputStream ois = new ObjectInputStream(fis)) {
 			Member[] list2 = (Member[]) ois.readObject();
-			System.arraycopy(list2, 0, list, 0, list2.length);
+			System.arraycopy(list2, 0, list, 0, list2.length);  // 우리 자바책 p219
 			System.out.println("파일에서 객체를 가져왔습니다.");
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -25,11 +26,10 @@ public class Project1 {
 				System.out.println(member);
 				++memCnt;
 			}
-			
 		}
 		System.out.println("총회원수:"+memCnt);
 		
-		Member member = null;
+		Member member = null; // 로그인 된 현재 사용자
 		Scanner scanner = new Scanner(System.in);
 		boolean run = true;
 		while (run) {
@@ -50,7 +50,7 @@ public class Project1 {
 				
 				int find = -1;  // 찾기 전 또는 못찾았을 때
 				
-				for (int i=0; i < memCnt; i++) {
+				for (int i=0; i < list.length; i++) {
 					if (list[i].name.equals(name) && list[i].ssn.equals(strPassword)) {
 						find = i;
 						member = list[i];
@@ -87,8 +87,7 @@ public class Project1 {
 				System.out.println("2. 주민번호 앞 6자리: " + ssn); 
 				System.out.println("3. 전화번호: " + tel);
 				// 객체 생성
-				Member newMb = new Member(name2, ssn, tel);
-				list[memCnt++] = newMb;
+				list[memCnt++] = new Member(name2, ssn, tel);
 				break;
 			case 3:
 				// 예금 출금

@@ -1,9 +1,8 @@
-package project1;
+package project1_1;
 
 import java.io.Serializable;
 
 public class Member implements Serializable {
-
 	String name;
 	String ssn;   // 주민번호 6자리 패스워드
 	String phone;
@@ -22,5 +21,7 @@ public class Member implements Serializable {
 	}
 	
 	public Member() {}
+	
+	
 	
 }
