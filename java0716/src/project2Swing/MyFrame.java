@@ -1,4 +1,4 @@
-package java0716;
+package project2Swing;
 
 import java.awt.Container;
 import javax.swing.JButton;
