@@ -19,7 +19,7 @@ public class MyFrame {
 }
 
 class MouseListenerEx extends JFrame {
-	JPanel jp = new JPanel();
+	JPanel jp = new JPanel();  // FlowLayout 기본
 	JLabel la = new JLabel("No Mouse Event");
 	
 	MouseListenerEx() {
