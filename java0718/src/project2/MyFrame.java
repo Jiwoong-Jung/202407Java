@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -41,8 +43,21 @@ public class MyFrame extends JFrame {
 		this.setResizable(false);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		this.addWindowListener(new JFrameWindowClosingEventHandler());
 	}
 	
+	class JFrameWindowClosingEventHandler extends WindowAdapter {
+		
+		@Override
+		public void windowClosing(WindowEvent e) {
+			// 파일 저장 위치
+			
+			JFrame frame = (JFrame)e.getWindow();
+			frame.dispose();
+			System.out.println("windowClosing()");
+		}
+	}
 	
 	public static void main(String[] ar) {
 		new MyFrame();
