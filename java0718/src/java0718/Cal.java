@@ -42,7 +42,6 @@ public class Cal extends JFrame{
 		minus = new JButton("-");
 		btPanel01.add(minus);
 		
-		
 		JPanel btPanel02 = new JPanel();	
 		btPanel02.setBounds(0, 120, 300, 40);
 		add(btPanel02);		
@@ -51,7 +50,6 @@ public class Cal extends JFrame{
 		divide = new JButton("/");
 		btPanel02.add(divide);
 				
-		
 		JPanel resultPanel = new JPanel();
 		resultPanel.setBounds(0, 160, 300, 40);
 		add(resultPanel);
@@ -62,7 +60,8 @@ public class Cal extends JFrame{
 	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(null);
-		setVisible(true);		
+		setVisible(true);
+		plus.addActionListener(new MyListener());
 		
 	}
 	
@@ -70,7 +69,15 @@ public class Cal extends JFrame{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			if (e.getSource() == plus) {
+				label02.setText(num1.getText()+num2.getText());
+			} else if (e.getSource() == minus) {
+				
+			} else if (e.getSource() == multiply) {
+				
+			} else if (e.getSource() == divide) {
+				
+			}
 			
 		}
 		
