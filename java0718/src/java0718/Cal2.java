@@ -10,12 +10,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Cal extends JFrame{
+public class Cal2 extends JFrame implements ActionListener {
 	
 	JTextField num1, num2;
 	JButton plus, minus, multiply, divide;
 	JLabel label02;
-	public Cal() {
+	public Cal2() {
 		setTitle("계산기 화면");
 		setSize(300, 250);	
 
@@ -61,42 +61,38 @@ public class Cal extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(null);
 		setVisible(true);
-		plus.addActionListener(new MyListener());
-		minus.addActionListener(new MyListener());
-		multiply.addActionListener(new MyListener());
-		divide.addActionListener(new MyListener());
-	}
-	
-	class MyListener implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-//			System.out.println(e.getActionCommand());
-			double result = 0.0;
-			double no1 = Double.parseDouble(num1.getText());
-			double no2 = Double.parseDouble(num2.getText());
-			switch (e.getActionCommand()) {
-			case "+": result = no1+no2; break;
-			case "-": result = no1-no2; break;
-			case "*": result = no1*no2; break;
-			case "/": result = no1/no2; break;
-			}
-//			if (e.getSource() == plus) {
-//				result = no1+no2;
-//			} else if (e.getSource() == minus) {
-//				result = no1-no2;
-//			} else if (e.getSource() == multiply) {
-//				result = no1*no2;
-//			} else if (e.getSource() == divide) {
-//				result = no1/no2;
-//			}
-			label02.setText(String.valueOf(result));
-		}
-		
+		plus.addActionListener(this);
+		minus.addActionListener(this);
+		multiply.addActionListener(this);
+		divide.addActionListener(this);
 	}
 	
 	public static void main(String[] args) {  
-		new Cal();
+		new Cal2();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		double result = 0.0;
+		double no1 = Double.parseDouble(num1.getText());
+		double no2 = Double.parseDouble(num2.getText());
+		switch (e.getActionCommand()) {
+		case "+": result = no1+no2; break;
+		case "-": result = no1-no2; break;
+		case "*": result = no1*no2; break;
+		case "/": result = no1/no2; break;
+		}
+//		if (e.getSource() == plus) {
+//			result = no1+no2;
+//		} else if (e.getSource() == minus) {
+//			result = no1-no2;
+//		} else if (e.getSource() == multiply) {
+//			result = no1*no2;
+//		} else if (e.getSource() == divide) {
+//			result = no1/no2;
+//		}
+		label02.setText(String.valueOf(result));
+		
 	}
 
 }
