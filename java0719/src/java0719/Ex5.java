@@ -8,9 +8,9 @@ import java.sql.Statement;
 public class Ex5 {
 
 	public static void main(String[] args) {
-		String createString = "INSERT INTO customer VALUES ('C-1003', '홍길동', '010-3456-7777', '부산')";
+		String createString = "INSERT INTO customer VALUES ('C-1001', '가나다', '010-3456-7777', '부산')";
 		
-		String URL = "jdbc:mysql://localhost:3306/spring5fs";
+		String URL = "jdbc:mysql://192.168.56.1:3306/spring5fs";
 		Connection con = null;
 		Statement stmt = null;
 		try {

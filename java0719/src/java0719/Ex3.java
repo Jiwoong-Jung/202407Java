@@ -14,7 +14,7 @@ public class Ex3 {
 				"customer_tel varchar(13), " + 
 		        "customer_addr varchar(20))";
 		
-		String URL = "jdbc:mysql://localhost:3306/spring5fs";
+		String URL = "jdbc:mysql://192.168.56.1:3306/spring5fs";
 		Connection con = null;
 		Statement stmt = null;
 		try {

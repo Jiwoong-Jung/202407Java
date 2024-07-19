@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class Ex2 {
 
 	public static void main(String[] args) {
-		String URL = "jdbc:mysql://localhost:3306/spring5fs";
+		String URL = "jdbc:mysql://192.168.56.1:3306/spring5fs";
 		Connection con = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
