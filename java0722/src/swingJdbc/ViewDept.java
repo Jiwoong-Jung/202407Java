@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -65,14 +66,17 @@ public class ViewDept extends JFrame {
 				try {
 					ResultSet rs = stmt.executeQuery(sql);
 					ta.setText("");
-					if (!rs.next()) {
-						JOptionPane.showMessageDialog(jf,"해당 자료없습니다.","정보", JOptionPane.INFORMATION_MESSAGE);
-					}
+					
+					boolean flag = true;
 					while (rs.next()) {
+						flag = false;
 						int deptno = rs.getInt("deptno");
 						String dname = rs.getString("dname");
 						String loc = rs.getString("loc");
 						ta.append(String.format("%d %s %s\n", deptno, dname, loc));
+					}
+					if (flag) {
+						JOptionPane.showMessageDialog(jf,"해당 자료없습니다.","정보", JOptionPane.INFORMATION_MESSAGE);
 					}
 					
 				} catch (SQLException e2) {
