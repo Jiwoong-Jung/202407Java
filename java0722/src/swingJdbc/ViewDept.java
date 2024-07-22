@@ -21,7 +21,19 @@ public class ViewDept extends JFrame {
 	JTextField tf = new JTextField(20);
 	JButton bt = new JButton("조회");
 	JTextArea ta = new JTextArea(10, 40);
+	Connection conn;
+	Statement stmt;
 	ViewDept() {
+		String URL = "jdbc:mysql://localhost:3307/spring5fs";	
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn = DriverManager.getConnection(URL, "root", "mysql");
+			stmt = conn.createStatement();
+		} catch (ClassNotFoundException | SQLException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		
 		Container con = this.getContentPane();
 		con.setLayout(new BorderLayout());
 		
@@ -43,17 +55,11 @@ public class ViewDept extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String URL = "jdbc:mysql://localhost:3307/spring5fs";
-				Connection conn = null;
-				Statement stmt = null;
 				String sql = "select deptno, dname, loc from dept";
 				
 				try {
-					Class.forName("com.mysql.cj.jdbc.Driver");
-					conn = DriverManager.getConnection(URL, "root", "mysql");
-					stmt = conn.createStatement();
 					ResultSet rs = stmt.executeQuery(sql);
-
+					ta.setText("");
 					while (rs.next()) {
 						int deptno = rs.getInt("deptno");
 						String dname = rs.getString("dname");
@@ -61,7 +67,7 @@ public class ViewDept extends JFrame {
 						ta.append(String.format("%d %s %s\n", deptno, dname, loc));
 					}
 					
-				} catch (ClassNotFoundException | SQLException e2) {
+				} catch (SQLException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
