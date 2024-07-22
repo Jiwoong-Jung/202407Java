@@ -3,6 +3,13 @@ package swingJdbc;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,6 +24,7 @@ public class ViewDept extends JFrame {
 	ViewDept() {
 		Container con = this.getContentPane();
 		con.setLayout(new BorderLayout());
+		
 		JPanel jp1 = new JPanel(new FlowLayout());
 		jp1.add(tf); jp1.add(bt);
 		con.add(jp1, BorderLayout.NORTH);
@@ -30,6 +38,37 @@ public class ViewDept extends JFrame {
 		this.setBounds(1200, 200, 500, 300);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		bt.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String URL = "jdbc:mysql://localhost:3307/spring5fs";
+				Connection conn = null;
+				Statement stmt = null;
+				String sql = "select deptno, dname, loc from dept";
+				
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					conn = DriverManager.getConnection(URL, "root", "mysql");
+					stmt = conn.createStatement();
+					ResultSet rs = stmt.executeQuery(sql);
+
+					while (rs.next()) {
+						int deptno = rs.getInt("deptno");
+						String dname = rs.getString("dname");
+						String loc = rs.getString("loc");
+						ta.append(String.format("%d %s %s\n", deptno, dname, loc));
+					}
+					
+				} catch (ClassNotFoundException | SQLException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+
+				
+			}
+		});
 	}
 	
 	

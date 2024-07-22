@@ -18,9 +18,6 @@ public class JdbcEx4 {
 			System.out.println("접속 성공!!");
 			stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
-//			boolean bb = rs.next();
-//			System.out.println(bb);
-//			System.out.println(rs.getString("dname"));
 
 			while (rs.next()) {
 				int deptno = rs.getInt("deptno");
@@ -28,9 +25,6 @@ public class JdbcEx4 {
 				String loc = rs.getString("loc");
 				System.out.printf("%d %s %s\n", deptno, dname, loc);
 			}
-			
-			
-			
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
