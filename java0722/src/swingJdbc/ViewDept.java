@@ -13,6 +13,7 @@ import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -23,7 +24,9 @@ public class ViewDept extends JFrame {
 	JTextArea ta = new JTextArea(10, 40);
 	Connection conn;
 	Statement stmt;
+	JFrame jf;
 	ViewDept() {
+		jf = this;
 		String URL = "jdbc:mysql://localhost:3307/spring5fs";	
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -55,11 +58,16 @@ public class ViewDept extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String sql = "select deptno, dname, loc from dept";
-				
+//				String sql = "select deptno, dname, loc from dept";
+				String input = tf.getText();
+				String sql = String.format("select deptno, dname, loc from dept where loc like '%%%s%%'", input);
+//				System.out.println(sql);
 				try {
 					ResultSet rs = stmt.executeQuery(sql);
 					ta.setText("");
+					if (!rs.next()) {
+						JOptionPane.showMessageDialog(jf,"해당 자료없습니다.","정보", JOptionPane.INFORMATION_MESSAGE);
+					}
 					while (rs.next()) {
 						int deptno = rs.getInt("deptno");
 						String dname = rs.getString("dname");
