@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class JdbcSelectExample {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter your SQL SELECT statement:");
+        System.out.print("Enter your SQL SELECT statement:");
         String sql = scanner.nextLine();
 
         String url = "jdbc:mysql://localhost:3306/spring5fs";
