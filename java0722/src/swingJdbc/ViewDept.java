@@ -66,7 +66,7 @@ public class ViewDept extends JFrame {
 				try {
 					ResultSet rs = stmt.executeQuery(sql);
 					ta.setText("");
-					
+										
 					boolean flag = true;
 					while (rs.next()) {
 						flag = false;
