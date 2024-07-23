@@ -16,6 +16,8 @@ public class MyFrame extends JFrame {
 	String[] walk = {"walk1.gif", "walk2.gif"};
 	String[] stand = {"stand.gif"};
 	String[] run = {"run1.gif", "run2.gif", "run3.gif"};
+	PATH p = PATH.STAND;
+	String[] path = stand;
 	MyFrame() {
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -43,8 +45,20 @@ public class MyFrame extends JFrame {
 		@Override
 		public void run() {
 			while (true) {
-
-				String[] path = stand;
+				switch(p) {
+				case STAND:
+					path = stand;
+					break;
+				case WALK:
+					path = walk;
+					break;
+				case RUN:
+					path = run;
+					break;
+				default:
+					path = stand;
+				}
+				
 				for (int i = 0; i < path.length; i++) {
 					lbl.setIcon(new ImageIcon("./src/" + path[i]));
 //					System.out.println(i);
@@ -77,11 +91,11 @@ public class MyFrame extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == standingBtn) {
-				
+				p = PATH.STAND;
 			} else if (e.getSource() == walkingBtn) {
-				
+				p = PATH.WALK;
 			} else if (e.getSource() == runningBtn) {
-				
+				p = PATH.RUN;
 			}
 		}
 	}
