@@ -13,6 +13,9 @@ import javax.swing.JPanel;
 
 public class MyFrame extends JFrame {
 	
+	String[] walk = {"walk1.gif", "walk2.gif"};
+	String[] stand = {"stand.gif"};
+	String[] run = {"run1.gif", "run2.gif", "run3.gif"};
 	MyFrame() {
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -40,10 +43,8 @@ public class MyFrame extends JFrame {
 		@Override
 		public void run() {
 			while (true) {
-				//달리는 동영상으로 바꿔 보세요.
-//				String[] path = {"walk1.gif", "walk2.gif"};
-//				String[] path = {"stand.gif"};
-				String[] path = {"run1.gif", "run2.gif", "run3.gif"};
+
+				String[] path = stand;
 				for (int i = 0; i < path.length; i++) {
 					lbl.setIcon(new ImageIcon("./src/" + path[i]));
 //					System.out.println(i);
@@ -75,7 +76,13 @@ public class MyFrame extends JFrame {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("실행!");
+			if (e.getSource() == standingBtn) {
+				
+			} else if (e.getSource() == walkingBtn) {
+				
+			} else if (e.getSource() == runningBtn) {
+				
+			}
 		}
 	}
 	
