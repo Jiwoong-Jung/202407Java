@@ -55,36 +55,29 @@ public class ViewDept extends JFrame {
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		bt.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-//				String sql = "select deptno, dname, loc from dept";
-				String input = tf.getText();
-				String sql = String.format("select deptno, dname, loc from dept where loc like '%%%s%%'", input);
-//				System.out.println(sql);
-				try {
-					ResultSet rs = stmt.executeQuery(sql);
-					ta.setText("");
-										
-					boolean flag = true;
-					while (rs.next()) {
-						flag = false;
-						int deptno = rs.getInt("deptno");
-						String dname = rs.getString("dname");
-						String loc = rs.getString("loc");
-						ta.append(String.format("%d %s %s\n", deptno, dname, loc));
-					}
-					if (flag) {
-						JOptionPane.showMessageDialog(jf,"해당 자료없습니다.","정보", JOptionPane.INFORMATION_MESSAGE);
-					}
-					
-				} catch (SQLException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
+		bt.addActionListener((e)-> {
+			String input = tf.getText();
+			String sql = String.format("select deptno, dname, loc from dept where loc like '%%%s%%'", input);
+//			System.out.println(sql);
+			try {
+				ResultSet rs = stmt.executeQuery(sql);
+				ta.setText("");
+									
+				boolean flag = true;
+				while (rs.next()) {
+					flag = false;
+					int deptno = rs.getInt("deptno");
+					String dname = rs.getString("dname");
+					String loc = rs.getString("loc");
+					ta.append(String.format("%d %s %s\n", deptno, dname, loc));
 				}
-
+				if (flag) {
+					JOptionPane.showMessageDialog(jf,"해당 자료없습니다.","정보", JOptionPane.INFORMATION_MESSAGE);
+				}
 				
+			} catch (SQLException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
 			}
 		});
 	}

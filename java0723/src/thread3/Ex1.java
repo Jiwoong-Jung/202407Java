@@ -4,6 +4,7 @@ public class Ex1 {
 
 	public static void main(String[] args) {
 //		Thread thread = new Thread(new Th1());
+		
 		Th1 th1 = new Th1();
 		th1.start();
 

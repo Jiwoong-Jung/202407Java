@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalTime;
@@ -33,8 +32,8 @@ public class ViewDept extends JFrame {
 //		JLabel lb1 = new JLabel("test");
 //		jp3.add(lb1);
 		
-		WinTime winTime = new WinTime();
-		winTime.start();
+//		WinTime winTime = new WinTime();
+//		winTime.start();
 		jf = this;
 		String URL = "jdbc:mysql://localhost:3307/spring5fs";	
 		try {
@@ -58,9 +57,12 @@ public class ViewDept extends JFrame {
 		jp2.add(ta);
 		con.add(jp2, BorderLayout.CENTER);
 		
-		con.add(new MyPanel(), BorderLayout.SOUTH);
+		WinTime winTime = new WinTime();
+		Thread thread = new Thread(winTime);
+		thread.start();
+		con.add(winTime, BorderLayout.SOUTH);
 		
-//		this.setTitle("view dept 테이블");
+		this.setTitle("view dept 테이블");
 		this.setBounds(1200, 200, 500, 300);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -104,23 +106,30 @@ public class ViewDept extends JFrame {
 		new ViewDept();
 	}
 	
-	class MyPanel extends JPanel {
+//	class MyPanel extends JPanel {
+//		JLabel lb1;
+//		MyPanel() {
+//			lb1 = new JLabel("테스트");
+//			this.add(lb1);
+//		}
+//		
+//	}
+	class WinTime extends JPanel implements Runnable {  // 힌트: WinTime을 판넬로 만들 수 있다
 		JLabel lb1;
-		MyPanel() {
+		
+		public WinTime() {
 			lb1 = new JLabel("테스트");
 			this.add(lb1);
 		}
 		
-	}
-	class WinTime extends Thread {  // 힌트: WinTime을 판넬로 만들 수 있다
-
 		@Override
 		public void run() {
 			for (;;) {
 				LocalTime localTime = LocalTime.now();
 				String str = String.format("%d:%d:%d\n", 
 						 localTime.getHour(), localTime.getMinute(), localTime.getSecond());
-				ViewDept.this.setTitle(str);
+//				ViewDept.this.setTitle(str);
+				lb1.setText(str);
 				try {
 					Thread.sleep(1000);  // 1초 sleep
 				} catch (InterruptedException e) {

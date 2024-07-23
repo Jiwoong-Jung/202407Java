@@ -9,9 +9,9 @@ public class JdbcSelectExample {
         System.out.print("Enter your SQL SELECT statement:");
         String sql = scanner.nextLine();
 
-        String url = "jdbc:mysql://localhost:3306/spring5fs";
+        String url = "jdbc:mysql://localhost:3307/spring5fs";
         String user = "root";
-        String password = "1234";
+        String password = "mysql";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
