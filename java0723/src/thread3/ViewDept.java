@@ -15,6 +15,7 @@ import java.time.LocalTime;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -28,6 +29,10 @@ public class ViewDept extends JFrame {
 	Statement stmt;
 	JFrame jf;
 	ViewDept() {
+//		JPanel jp3 = new JPanel();
+//		JLabel lb1 = new JLabel("test");
+//		jp3.add(lb1);
+		
 		WinTime winTime = new WinTime();
 		winTime.start();
 		jf = this;
@@ -52,6 +57,8 @@ public class ViewDept extends JFrame {
 		jp2.setLayout(new FlowLayout());
 		jp2.add(ta);
 		con.add(jp2, BorderLayout.CENTER);
+		
+		con.add(new MyPanel(), BorderLayout.SOUTH);
 		
 //		this.setTitle("view dept 테이블");
 		this.setBounds(1200, 200, 500, 300);
@@ -97,7 +104,15 @@ public class ViewDept extends JFrame {
 		new ViewDept();
 	}
 	
-	class WinTime extends Thread {
+	class MyPanel extends JPanel {
+		JLabel lb1;
+		MyPanel() {
+			lb1 = new JLabel("테스트");
+			this.add(lb1);
+		}
+		
+	}
+	class WinTime extends Thread {  // 힌트: WinTime을 판넬로 만들 수 있다
 
 		@Override
 		public void run() {
