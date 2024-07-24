@@ -11,6 +11,12 @@ public class Student {
 		this.hakbun = hakbun;
 		this.java = java;
 	}
+
+	@Override
+	public String toString() {
+		return "Student [name=" + name + ", hakbun=" + hakbun + ", java=" + java + "]";
+	}
+	
 	
 	
 }
