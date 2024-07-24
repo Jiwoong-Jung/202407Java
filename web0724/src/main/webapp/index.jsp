@@ -8,5 +8,10 @@
 </head>
 <body>
 <h1>JSP 페이지</h1>
+
+<form action="/web0724/dept.do">
+<input type="text" name="loc">
+<input type="submit">
+</form>
 </body>
 </html>

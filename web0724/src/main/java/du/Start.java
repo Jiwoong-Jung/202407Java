@@ -18,10 +18,10 @@ public class Start extends HttpServlet {
     }
     
    
-	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("service() 호출");
-	}
+//	@Override
+//	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		System.out.println("service() 호출");
+//	}
 
 	@Override
 	public void destroy() {
