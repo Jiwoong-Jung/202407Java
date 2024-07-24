@@ -6,7 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
 <h1>여기는 홈</h1>
+<form action="/testWeb/login.do"method="post">
+<input type="text" name="dname" />
+<input type="submit"/>
+</form>
 </body>
 </html>

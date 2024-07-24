@@ -29,10 +29,10 @@ public class Start extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		driver = "com.mysql.cj.jdbc.Driver";
-		url = "jdbc:mysql://192.168.56.1:3306/";
+		url = "jdbc:mysql://localhost:3307/";
 		dbName = "spring5fs";
 		user = "root";
-		passwd = "1234";
+		passwd = "mysql";
 		
 
 		try {
@@ -61,7 +61,7 @@ public class Start extends HttpServlet {
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet result = null;
-		String query = "select * from customer";
+		String query = "select * from dept";
 
 		try {
 
@@ -79,7 +79,7 @@ public class Start extends HttpServlet {
 				resultStr += "&nbsp;&nbsp;&nbsp;&nbsp; ";
 				resultStr += result.getString(2) + "&nbsp;&nbsp; ";
 				resultStr +=  result.getString(3) + "&nbsp;&nbsp; ";
-				resultStr += result.getString(4);
+//				resultStr += result.getString(4);
 				out.println(resultStr + "<br>");
 			}
 			out.println("=============================================<br>");
