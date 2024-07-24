@@ -12,7 +12,7 @@ public class Ex3 {
 		String URL = "jdbc:mysql://localhost:3307/spring5fs";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "select deptno, dname, loc from dept";
+		String sql = "select deptno, dname, loc from dept where loc like ?";
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -20,6 +20,7 @@ public class Ex3 {
 			conn = DriverManager.getConnection(URL, "root", "mysql");
 			System.out.println("Mysql 접속 성공!");
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "서울");
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
 				int deptno = rs.getInt("deptno");
