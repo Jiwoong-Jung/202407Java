@@ -29,14 +29,18 @@ public class First extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String str = request.getParameter("nn");
-		LoginSession.name = str;
+		String name = request.getParameter("name");
+		String ssn = request.getParameter("ssn");
+		
 		response.setContentType("text/html;charset=utf8");
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
-//		out.println("<meta charset='UTF-8'>");
-		out.println("<h1>나온다</h1>");
-		out.println("<h1>"+LoginSession.name+"님, 환영합니다.</h1>");
+		if (ssn.equals(LoginSession.ssn)) {
+			out.println("<h1>"+name+"님, 환영합니다.</h1>");
+		} else {
+			out.println("<h1>로그인을 다시 해 주세요</h1>");
+		}
+		
 		out.println("</html>");
 	}
 
