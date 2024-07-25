@@ -7,11 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>JSP 페이지</h1>
-
-<form action="/web0725/dept.do">
-<input type="text" name="loc">
-<input type="submit">
+<form action="/web0725/IncreaseNum">
+<input type="submit"/>
 </form>
 </body>
 </html>

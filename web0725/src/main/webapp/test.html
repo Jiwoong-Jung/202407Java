@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>SSAFY-파라미터전달</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="col-lg-5">
+			<h5 class="text-center">Servlet을 이용한 파라미터 전달(Single)</h5>
+			<form name="paramform" method="post" action="/bw/singleparam.ssafy">
+				<div class="form-group">
+					<label for="userid">아이디:</label> <input type="text"
+						class="form-control" placeholder="아이디 입력" name="userid">
+				</div>
+				<div class="form-group">
+					<label for="username">이름:</label> <input type="text"
+						class="form-control" placeholder="이름 입력" name="username">
+				</div>
+				<div class="form-group">
+					<label for="area">지역:</label> <select name="area"
+						class="custom-select">
+						<option value="0">서울</option>
+						<option value="1" selected>대전</option>
+						<option value="2">구미</option>
+						<option value="3">광주</option>
+						<option value="4">부울경</option>
+					</select>
+				</div>
+				<button type="submit" class="btn btn-primary">전송</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
