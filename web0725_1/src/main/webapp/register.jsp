@@ -3,18 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<h1>로그인</h1>
-<form action="/web0725_1/First">
+<h1>회원 가입</h1>
+<form action="/web0725_1/Register">
 이름: <input type="text" name="name"><br>
 SSN: <input type="text" name="ssn"><br>
+TEL:&nbsp; <input type="text" name="tel"><br>
 <input type="submit">
 </form>
-
-<a href="https://www.naver.com">네이버</a>
-<a href="register.jsp">회원 가입</a>
 </body>
 </html>
