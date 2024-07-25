@@ -2,7 +2,11 @@ package java0725;
 
 class MyClass {
 	void method() throws MyException {
-		throw new MyException("나의 예외!!");  // 예외 발생
+		int x = 100;
+		if (x > 90) {
+			throw new MyException("나의 예외!!");  // 예외 발생
+		}
+		
 	}
 }
 
