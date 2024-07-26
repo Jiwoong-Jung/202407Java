@@ -5,7 +5,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-
+String str = request.getParameter("loc");
+if ("".equals(str)) {
+	str = "%";
+}
 String URL = "jdbc:mysql://localhost:3307/spring5fs";
 Connection conn = null;
 PreparedStatement pstmt = null;
@@ -15,7 +18,7 @@ conn = DriverManager.getConnection(URL, "root", "mysql");
 //out.println("mysql 접속!!");
 String sql = "select * from dept where loc like ?";
 pstmt = conn.prepareStatement(sql);
-pstmt.setString(1, "%");
+pstmt.setString(1, str);
 ResultSet rs = pstmt.executeQuery();
 %>
 
@@ -27,7 +30,7 @@ ResultSet rs = pstmt.executeQuery();
 </head>
 <body>
 <form>
-지역: <input type="text" name="loc">
+지역: <input type="text" name="loc" >
 <input type="submit">
 </form>
 <p>
