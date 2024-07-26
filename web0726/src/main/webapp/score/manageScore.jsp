@@ -12,6 +12,7 @@ String eng3 = "";
 String math3 = "";
 
 request.setCharacterEncoding("UTF-8");
+String update =request.getParameter("update");
 String find =request.getParameter("find");
 //out.println(find);
 String num = request.getParameter("num");
@@ -28,14 +29,31 @@ Class.forName("com.mysql.cj.jdbc.Driver");
 conn = DriverManager.getConnection(URL, "root", "mysql");
 
 if (num != null) {
-	sql = "insert into score(num, name, kor, eng, math) values (?,?,?,?,?)";
+	sql = "select count(*) from score where num = ?";
 	pstmt = conn.prepareStatement(sql);
 	pstmt.setString(1, num);
-	pstmt.setString(2, name);
-	pstmt.setString(3, kor);
-	pstmt.setString(4, eng);
-	pstmt.setString(5, math);
-	int ret = pstmt.executeUpdate();
+	ResultSet rs = pstmt.executeQuery();
+	rs.next();
+	int cnt = rs.getInt(1);
+	if (cnt == 1) { // 정보 수정
+		sql = "update score set name = ?, kor = ?, eng = ?, math = ? where num = ?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, name);
+		pstmt.setString(2, kor);
+		pstmt.setString(3, eng);
+		pstmt.setString(4, math);
+		pstmt.setString(5, num);
+		int ret = pstmt.executeUpdate();
+	} else { //정보 입력
+		sql = "insert into score(num, name, kor, eng, math) values (?,?,?,?,?)";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, num);
+		pstmt.setString(2, name);
+		pstmt.setString(3, kor);
+		pstmt.setString(4, eng);
+		pstmt.setString(5, math);
+		int ret = pstmt.executeUpdate();
+	}
 }
 
 if (find != null) {
@@ -51,6 +69,7 @@ if (find != null) {
 		math3 = rs.getString("math");
 	}
 }
+
 
 %>    
 <!DOCTYPE html>
@@ -70,7 +89,7 @@ if (find != null) {
     국어: <input type="text" name="kor" value="<%=kor3 %>"><br>
     영어: <input type="text" name="eng" value="<%=eng3 %>"><br>
     수학: <input type="text" name="math" value="<%=math3 %>"><br>
-    <input type="submit" value="입력"> <button type="button" onclick="location.href='?update=OK'">수정</button>
+    <input type="submit" value="입력/수정">
 </form>
 <table>
 	<tr>
