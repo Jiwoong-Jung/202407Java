@@ -9,15 +9,14 @@ String URL = "jdbc:mysql://localhost:3307/spring5fs";
 Connection conn = null;
 PreparedStatement pstmt = null;
 Class.forName("com.mysql.cj.jdbc.Driver");
-out.println("드라이버 로딩!!");
+//out.println("드라이버 로딩!!");
 conn = DriverManager.getConnection(URL, "root", "mysql");
-out.println("mysql 접속!!");
+//out.println("mysql 접속!!");
 String sql = "select * from dept";
 pstmt = conn.prepareStatement(sql);
 
 ResultSet rs = pstmt.executeQuery();
 %>
-
 
 <!DOCTYPE html>
 <html>
@@ -26,6 +25,20 @@ ResultSet rs = pstmt.executeQuery();
 <title>Insert title here</title>
 </head>
 <body>
-
+<%
+while(rs.next()) {
+	String deptno = rs.getString("deptno");
+	String dname = rs.getString("dname");
+	String loc = rs.getString("loc");
+	out.println(deptno); // 테이블 태그를 사용하여 출력
+}
+%>
 </body>
 </html>
+
+
+
+
+
+
+
