@@ -10,8 +10,8 @@
 <form action="colorResult.jsp">
 이름 : <input name="name"><p/>
 좋아하는 색깔 : <select name="color">
-        <option value="blue" selected>파란색</option>
-        <option value="red">빨간색</option>
+        <option value="blue">파란색</option>
+        <option value="red" selected>빨간색</option>
         <option value="orange">오렌지색</option>
 </select><p/>
 <input type="submit" value="보내기">
