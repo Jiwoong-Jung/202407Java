@@ -8,7 +8,6 @@
 <h1>구구단 출력</h1>
 <form method="post" action="guguResult.jsp">
 구구단 입력 : <input name="gugu">단<p/>
-<p/> 
 <input type="submit" value="보내기">
 </form>
 </body>
