@@ -7,7 +7,7 @@
 <title>색깔을 선택하세요</title>
 </head>
 <body>
-<form action="colorResult.jsp">
+<form action="colorResult.jsp" method="post">
 이름 : <input name="name"><p/>
 좋아하는 색깔 : <select name="color">
         <option value="blue">파란색</option>
