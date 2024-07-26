@@ -6,6 +6,8 @@
     pageEncoding="UTF-8"%>
 <%
 request.setCharacterEncoding("UTF-8");
+String find =request.getParameter("find");
+out.println(find);
 String num = request.getParameter("num");
 String name = request.getParameter("name");
 String kor = request.getParameter("kor");
@@ -71,7 +73,7 @@ while(rs.next()) {
 	double avg = tot / 3.0;
 %>
 <tr>
-<td><%=num1 %></td><td><%=name1 %></td><td><%=kor1 %></td><td><%=eng1 %></td><td><%=math1 %></td>
+<td><a href="manageScore.jsp?find=<%=num1%>"><%=num1 %></a></td><td><%=name1 %></td><td><%=kor1 %></td><td><%=eng1 %></td><td><%=math1 %></td>
 <td><%=tot %></td><td><%=avg %></td>
 </tr>
 <%	
