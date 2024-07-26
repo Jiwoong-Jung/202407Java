@@ -70,7 +70,7 @@ if (find != null) {
     국어: <input type="text" name="kor" value="<%=kor3 %>"><br>
     영어: <input type="text" name="eng" value="<%=eng3 %>"><br>
     수학: <input type="text" name="math" value="<%=math3 %>"><br>
-    <input type="submit" value="확인"> 
+    <input type="submit" value="입력"> <button type="button" onclick="location.href='?update=OK'">수정</button>
 </form>
 <table>
 	<tr>
