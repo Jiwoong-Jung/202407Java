@@ -95,7 +95,7 @@ if (find != null) {
 	<tr>
         <th>번호</th><th>이름</th>
         <th>국어</th><th>영어</th><th>수학</th>
-        <th>총점</th><th>평균</th>
+        <th>총점</th><th>평균</th><th>삭제</th>
     </tr>
 <%
 sql = "select * from score";
@@ -113,7 +113,7 @@ while(rs.next()) {
 %>
 <tr>
 <td><a href="?find=<%=num1%>"><%=num1 %></a></td><td><%=name1 %></td><td><%=kor1 %></td><td><%=eng1 %></td><td><%=math1 %></td>
-<td><%=tot %></td><td><%=avg %></td>
+<td><%=tot %></td><td><%=avg %></td><td><button type="button" onclick="location.href='?delete=<%=num1%>' ">삭제</button></td>
 </tr>
 <%	
 }
