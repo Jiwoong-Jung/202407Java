@@ -12,8 +12,8 @@ String eng3 = "";
 String math3 = "";
 
 request.setCharacterEncoding("UTF-8");
-String update =request.getParameter("update");
-String find =request.getParameter("find");
+//String update =request.getParameter("update");
+String find = request.getParameter("find");
 //out.println(find);
 String num = request.getParameter("num");
 String name = request.getParameter("name");
