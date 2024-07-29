@@ -1,3 +1,4 @@
+<%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
@@ -51,6 +52,29 @@ String math = request.getParameter("math");
         <th>국어</th><th>영어</th><th>수학</th>
         <th>총점</th><th>평균</th><th>삭제</th>
 </tr>
+
+<%
+sqlTmp = "select * from score";
+pstmt = conn.prepareStatement(sqlTmp);
+ResultSet rs = pstmt.executeQuery();
+
+while(rs.next()) {
+	numTmp = rs.getString("num");
+	nameTmp = rs.getString("name");
+	korTmp = rs.getString("kor");
+	engTmp = rs.getString("eng");
+	mathTmp = rs.getString("math");
+	int tot = Integer.parseInt(korTmp)+Integer.parseInt(engTmp)+Integer.parseInt(mathTmp);
+	double avg = tot / 3.0;
+%>	
+	<tr>
+	<td><%=numTmp %></td><td><%=nameTmp %></td><td><%=korTmp %></td>
+	<td><%=engTmp %></td><td><%=mathTmp %></td><td><%=tot %></td><td><%=avg %></td>
+	</tr>
+<%
+}
+%>
+
 </table>
 </body>
 </html>
