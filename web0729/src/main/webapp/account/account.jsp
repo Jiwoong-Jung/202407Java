@@ -20,7 +20,7 @@ int balanceTmp = 0;
 String sqlTmp = "";
 // 매개변수들
 request.setCharacterEncoding("UTF-8");        // 한글 처리
-String find = request.getParameter("find");   // update하기 전 학번을 클릭하면 넘어오는 매개변수값
+String find = request.getParameter("find");   // update하기 전 id을 클릭하면 넘어오는 매개변수값
 String id = request.getParameter("id");     // null이면 insert나 update를 하지 말아야
 String name = request.getParameter("name");
 String ssn = request.getParameter("ssn");
@@ -35,7 +35,7 @@ if (delete != null) {
 	int ret = pstmt.executeUpdate();
 }
 
-// update하기 전 학번을 클릭하면
+// update하기 전 id을 클릭하면
 if (find != null) {
 	sqlTmp = "select * from account where id = ?";
 	pstmt = conn.prepareStatement(sqlTmp);
