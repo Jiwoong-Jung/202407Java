@@ -11,7 +11,6 @@ Connection conn = null;
 PreparedStatement pstmt = null;
 Class.forName("com.mysql.cj.jdbc.Driver");
 conn = DriverManager.getConnection(URL, "root", "mysql");
-
 %>
 <!DOCTYPE html>
 <html>

@@ -1,6 +1,35 @@
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%
+//데이터베이스 접속
+String URL = "jdbc:mysql://localhost:3307/spring5fs";
+Connection conn = null;
+PreparedStatement pstmt = null;
+Class.forName("com.mysql.cj.jdbc.Driver");
+conn = DriverManager.getConnection(URL, "root", "mysql");
+//쿼리 실행
+String num = request.getParameter("num");
+String sql = "select * from board where num = ?";
+pstmt = conn.prepareStatement(sql);
+pstmt.setString(1, num);
+ResultSet rs = pstmt.executeQuery();
+String writer = "";
+String title = "";
+String regtime = "";
+String content = "";
+int hits = 0;
+if (rs.next()) {
+	writer = rs.getString("writer");
+	title = rs.getString("title");
+	regtime = rs.getString("regtime");
+	hits = rs.getInt("hits");
+	content = rs.getString("content");
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,23 +45,23 @@
 <table>
     <tr>
         <th>제목</th>
-        <td>글 제목 2</td>
+        <td><%=title %></td>
     </tr>
     <tr>
         <th>작성자</th>
-        <td>장길산</td>
+        <td><%=writer %></td>
     </tr>
     <tr>
         <th>작성일시</th>
-        <td>2020-02-06 14:32:25</td>
+        <td><%=regtime %></td>
     </tr>
     <tr>
         <th>조회수</th>
-        <td>31</td>
+        <td><%=hits %></td>
     </tr>
     <tr>
         <th>내용</th>
-        <td>글의 내용입니다.</td>
+        <td><%=content %></td>
     </tr>
 </table>
 
