@@ -15,8 +15,8 @@ public class Ex7 {
 		String URL = "jdbc:mysql://localhost:3307/spring5fs";
 		List<Score> list = new ArrayList<>();
 		try (Connection conn = DriverManager.getConnection(URL, "root", "mysql");
-		             Statement stmt = conn.createStatement();
-		             ResultSet rs = stmt.executeQuery("SELECT * FROM score")) {
+		     Statement stmt = conn.createStatement();
+		     ResultSet rs = stmt.executeQuery("SELECT * FROM score")) {
 			while (rs.next()) {
 				int num = rs.getInt("num");
 				String name = rs.getString("name");
@@ -29,7 +29,7 @@ public class Ex7 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(list);
+		list.stream().forEach(System.out::println);
 
 	}
 
