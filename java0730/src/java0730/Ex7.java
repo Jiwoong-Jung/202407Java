@@ -37,12 +37,18 @@ public class Ex7 {
         
         OptionalDouble korAvg = list.stream().mapToInt(s->s.getKor()).average();
         korAvg.ifPresent(avg -> System.out.println("국어 평균: " + avg));
-        
+        //===============================================================
         int engSum = list.stream().mapToInt(s->s.getEng()).sum();
         System.out.println("영어 총점: "+ engSum);
         
         OptionalDouble engAvg = list.stream().mapToInt(s->s.getEng()).average();
         engAvg.ifPresent(avg -> System.out.println("영어 평균: " + avg));
+        //===============================================================
+        int totSum = list.stream().mapToInt(s->s.getSum()).sum();
+        System.out.println("전체 총점: "+ totSum);
+        
+        OptionalDouble totAvg = list.stream().mapToDouble(s->s.getAvg()).average();
+        totAvg.ifPresent(avg -> System.out.println("전체 평균: " + avg));
 
 	}
 
