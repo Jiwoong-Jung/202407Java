@@ -42,6 +42,7 @@ if (rs.next()) {
 <body>
 
 <form method="post" action="update.jsp">
+	<input type="hidden" name="num" value="<%=num%>">
     <table>
         <tr>
             <th>제목</th>
