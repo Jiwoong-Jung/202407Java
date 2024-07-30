@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalDouble;
 
 public class Ex7 {
 
@@ -32,7 +33,16 @@ public class Ex7 {
 		list.stream().forEach(System.out::println);
 
         int korSum = list.stream().mapToInt(s->s.getKor()).sum();
-        System.out.println(korSum);
+        System.out.println("국어 총점: "+ korSum);
+        
+        OptionalDouble korAvg = list.stream().mapToInt(s->s.getKor()).average();
+        korAvg.ifPresent(avg -> System.out.println("국어 평균: " + avg));
+        
+        int engSum = list.stream().mapToInt(s->s.getEng()).sum();
+        System.out.println("영어 총점: "+ engSum);
+        
+        OptionalDouble engAvg = list.stream().mapToInt(s->s.getEng()).average();
+        engAvg.ifPresent(avg -> System.out.println("영어 평균: " + avg));
 
 	}
 
