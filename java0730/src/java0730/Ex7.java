@@ -31,6 +31,9 @@ public class Ex7 {
 		}
 		list.stream().forEach(System.out::println);
 
+        int korSum = list.stream().mapToInt(s->s.getKor()).sum();
+        System.out.println(korSum);
+
 	}
 
 }
