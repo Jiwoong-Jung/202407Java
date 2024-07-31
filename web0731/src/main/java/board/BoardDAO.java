@@ -16,6 +16,25 @@ public class BoardDAO {
 	private ResultSet rs = null;
 	
 	private String BOARD_LIST = "select * from board";
+	private String BOARD_INSERT = "insert into board(writer, title, content, regtime, hits) values(?,?,?,now(),0)";
+	
+	//게시판 등록
+	public void insertBoard(BoardDTO dto) {
+		conn = JDBCUtil.getConnection();
+		try {
+			stmt = conn.prepareStatement(BOARD_INSERT);
+			stmt.setString(1, dto.getWriter());
+			stmt.setString(2, dto.getTitle());
+			stmt.setString(3, dto.getContent());
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
+		}
+	}
+	
+	
 	//게시판 목록 조회
 	public List<BoardDTO> getBoardList() {
 		List<BoardDTO> list = new ArrayList<>();
