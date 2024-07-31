@@ -27,7 +27,7 @@ public class BoardDAO {
 			while (rs.next()) {
 				BoardDTO dto = new BoardDTO(rs.getInt("num"), rs.getString("writer"),
 						rs.getString("title"), rs.getString("content"),
-						rs.getString("regtime"), rs.getInt("hists"));
+						rs.getString("regtime"), rs.getInt("hits"));
 				list.add(dto);
 			}
 		} catch (SQLException e) {
