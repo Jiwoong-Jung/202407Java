@@ -9,7 +9,7 @@ import java.util.List;
 
 import util.JDBCUtil;
 
-public class boardDAO {
+public class BoardDAO {
 	// JDBC 관련 변수 
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
