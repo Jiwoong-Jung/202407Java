@@ -18,7 +18,7 @@ public class JDBCUtil {
 		}
 		return conn;
 	}
-	public static void close(PreparedStatement stmt, Connection conn) {
+	public static void close(PreparedStatement stmt, Connection conn) { // insert, update, delete
 		try {
 			stmt.close();
 		} catch (SQLException e) {
@@ -31,7 +31,7 @@ public class JDBCUtil {
 			e.printStackTrace();
 		}
 	}
-	public static void close(ResultSet rs, PreparedStatement stmt, Connection conn) {
+	public static void close(ResultSet rs, PreparedStatement stmt, Connection conn) { // select
 		try {
 			rs.close();
 		} catch (SQLException e) {
