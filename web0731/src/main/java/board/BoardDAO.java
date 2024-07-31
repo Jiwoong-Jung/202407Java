@@ -54,9 +54,6 @@ public class BoardDAO {
 			JDBCUtil.close(rs, stmt, conn);
 		}
 		return dto;
-		
-	
-		
 	}
 	
 	//게시판 목록 조회
