@@ -1,8 +1,10 @@
-package sec01.exam07;
+package drive;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+
+import board.BoardDTO;
 
 public class ReadEx {
 
