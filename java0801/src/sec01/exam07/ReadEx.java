@@ -12,7 +12,14 @@ public class ReadEx {
 		
 		BufferedReader br = new BufferedReader(new FileReader("C:/Temp/board1.csv"));
 		while ((line = br.readLine()) != null) {
-			System.out.println(line);
+			// CSV 파일의 각 줄을 쉼표로 분리
+            String[] data = line.split(",");
+            
+            // 분리된 데이터 출력
+            for (String element : data) {
+                System.out.print(element + " ");
+            }
+            System.out.println();
 		}
 		
 		br.close();
