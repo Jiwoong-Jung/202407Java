@@ -23,10 +23,16 @@
         Cookie loginCookie = new Cookie("username", username);
         loginCookie.setMaxAge(60 * 60); // 1시간 동안 유효
         response.addCookie(loginCookie);
-        response.sendRedirect("index.jsp");
+        out.println("<script type='text/javascript'>");
+        out.println("alert('환영합니다, " + username + "!');");
+        out.println("window.location.href = 'index.jsp';");
+        out.println("</script>");
     
     } else {
-    	out.println("<h2>Login 실패.</h2>");
+    	out.println("<script type='text/javascript'>");
+        out.println("alert('로그인 실패!');");
+        out.println("window.location.href = 'index.jsp';");
+        out.println("</script>");
     }
 
 %>
