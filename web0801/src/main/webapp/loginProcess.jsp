@@ -23,7 +23,7 @@
         Cookie loginCookie = new Cookie("username", username);
         loginCookie.setMaxAge(60 * 60); // 1시간 동안 유효
         response.addCookie(loginCookie);
-     
+        response.sendRedirect("index.jsp");
     
     } else {
     	out.println("<h2>Login 실패.</h2>");
