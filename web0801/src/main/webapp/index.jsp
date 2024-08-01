@@ -56,7 +56,7 @@
         <h1>Welcome to My JSP Homepage</h1>
     </header>
     <nav>
-        <a href="#">Home</a>
+        <a href="home.jsp">Home</a>
         <a href="#">About</a>
  
 <%
