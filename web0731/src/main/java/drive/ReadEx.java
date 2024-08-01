@@ -14,10 +14,10 @@ public class ReadEx {
 		String line = "";
 		BoardDAO dao = new BoardDAO();
 		
-		BufferedReader br = new BufferedReader(new FileReader("C:/Temp/board1.csv"));
+		BufferedReader br = new BufferedReader(new FileReader("C:/Temp/board2.csv"));
 		while ((line = br.readLine()) != null) {
 			// CSV 파일의 각 줄을 쉼표로 분리
-            String[] data = line.split(", ");
+            String[] data = line.split(",");
             
             BoardDTO dto = new BoardDTO(0, data[0], data[1], data[2], null, 0);
             System.out.println(dto);
