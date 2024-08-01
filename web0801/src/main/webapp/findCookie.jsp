@@ -4,21 +4,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>쿠키 변경</title>
+<title>쿠키 찾기</title>
 </head>
 <body>
 <%
+String username = "";
 Cookie[] cookies = request.getCookies();
 if (cookies != null && cookies.length > 0) {
 	for (int i=0; i < cookies.length; i++) {
-		if (cookies[i].getName().equals("loginid")) {
-			Cookie cookie = new Cookie("loginid", "Kim");   // key, value
-			response.addCookie(cookie);
+		if (cookies[i].getName().equals("username")) {
+			username = cookies[i].getValue();
+			break;
 		}
 	}
 }
 
 %>
-loginid 쿠키 변경
+username은 <%=username %>입니다.
 </body>
 </html>

@@ -11,8 +11,8 @@
 Cookie[] cookies = request.getCookies();
 if (cookies != null && cookies.length > 0) {
 	for (int i=0; i < cookies.length; i++) {
-		if (cookies[i].getName().equals("loginid")) {
-			Cookie cookie = new Cookie("loginid", "");   // key, value
+		if (cookies[i].getName().equals("username")) {
+			Cookie cookie = new Cookie("username", "");   // key, value
 			cookie.setMaxAge(0);
 			response.addCookie(cookie);
 		}
@@ -20,6 +20,6 @@ if (cookies != null && cookies.length > 0) {
 }
 
 %>
-loginid 쿠키 삭제
+username 쿠키 삭제
 </body>
 </html>
