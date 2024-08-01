@@ -1,4 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+    Cookie[] cookies = request.getCookies();
+    String username = null;
+
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("username")) {
+                username = cookie.getValue();
+                break;
+            }
+        }
+    }
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +58,20 @@
     <nav>
         <a href="#">Home</a>
         <a href="#">About</a>
+ 
+<%
+if (username != null) {
+%>
+		<a><%=username %></a>
+		<a href="logout.jsp">logout</a>
+<%
+} else {
+%>
         <a href="login.jsp">login</a>
+<%
+}
+%>
+ 
     </nav>
     <div class="content">
         <h2>Hello, World!</h2>
