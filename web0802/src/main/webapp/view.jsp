@@ -5,6 +5,7 @@
 <%
 String num = request.getParameter("num");
 BoardDAO dao = new BoardDAO();
+dao.increaseHits(Integer.parseInt(num));
 BoardDTO dto = dao.getOne(Integer.parseInt(num));
 %>
 <!DOCTYPE html>
