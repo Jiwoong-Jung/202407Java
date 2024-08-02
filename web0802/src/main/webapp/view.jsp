@@ -47,7 +47,7 @@ BoardDTO dto = dao.getOne(Integer.parseInt(num));
 <input type="button" value="수정"
        onclick="location.href='write2.jsp?num=<%=dto.getNum()%>'">
 <input type="button" value="삭제"
-       onclick="location.href='delete.jsp?num=2'">
+       onclick="location.href='delete.jsp?num=<%=dto.getNum()%>'">
 
 </body>
 </html>
