@@ -7,15 +7,5 @@
 	response.addCookie(
 		Cookies.createCookie("email", email, "/", -1)
 	);
+	response.sendRedirect("saveEmail.jsp");
 %>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>쿠키 생성</title>
-</head>
-<body>
-쿠키 생성
-</body>
-</html>
