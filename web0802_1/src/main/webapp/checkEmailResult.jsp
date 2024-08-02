@@ -4,7 +4,7 @@
 <%
 String email = request.getParameter("email");
 String rememberMe = request.getParameter("rememberMe");
-System.out.println(rememberMe);
+System.out.println(rememberMe);  // on 또는 null
 if ("on".equals(rememberMe)) {
 	response.addCookie(
 			Cookies.createCookie("email", email, "/", -1) // 쿠키 생성
