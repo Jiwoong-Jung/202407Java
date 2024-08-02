@@ -19,6 +19,21 @@ public class BoardDAO {
 	private String BOARD_ONE = "select * from board where num = ?";
 	private String BOARD_INSERT = "insert into board(writer, title, content, regtime, hits) values(?,?,?,now(),0)";
 	private String BOARD_UPDATE = "update board set writer = ?, title = ?, content = ?, regtime = now() where num = ?";
+	private String BOARD_DELETE = "delete from board where num = ?";
+	
+	//게시판 삭제
+		public void deleteBoard(int num) {
+			conn = JDBCUtil.getConnection();
+			try {
+				stmt = conn.prepareStatement(BOARD_DELETE);
+				stmt.setInt(1, num);
+				stmt.executeUpdate();	
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(stmt, conn);
+			}
+		}
 	
 	//게시판 수정
 	public void updateBoard(BoardDTO dto) {
