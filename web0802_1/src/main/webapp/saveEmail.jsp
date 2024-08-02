@@ -2,9 +2,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-
+String email = "";
 Cookies cookies = new Cookies(request);
-String email = cookies.getValue("email");
+if (cookies.exists("email")) {
+	email = cookies.getValue("email");
+}
+
 %>
 
 <!DOCTYPE html>
