@@ -6,6 +6,8 @@
 	Date time = new Date();
 	SimpleDateFormat formatter = 
 	  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	System.out.println(session.getCreationTime());
+	System.out.println(session.getLastAccessedTime());
 %>
 <html>
 <head><title>세션정보</title></head>
