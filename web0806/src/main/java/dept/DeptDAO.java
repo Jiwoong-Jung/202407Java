@@ -15,6 +15,7 @@ public class DeptDAO {
 		private ResultSet rs = null;
 		
 		private String DEPT_LIST = "select * from dept";
+		private String DEPT_INSERT = "insert into dept(deptno, dname, loc) values (?,?,?)";
 		
 		public List<DeptDTO> getDeptList() {
 			List<DeptDTO> list = new ArrayList<>();
@@ -34,6 +35,21 @@ public class DeptDAO {
 			}
 			
 			return list;
+		}
+		
+		public void insertDept(DeptDTO dto) {
+			conn = JDBCUtil.getConnection();
+			try {
+				stmt = conn.prepareStatement(DEPT_INSERT);
+				stmt.setInt(1, dto.getDeptno());
+				stmt.setString(2, dto.getDname());
+				stmt.setString(3, dto.getLoc());
+				stmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(stmt, conn);
+			}
 		}
 		
 }
