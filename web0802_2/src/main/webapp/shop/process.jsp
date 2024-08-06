@@ -17,7 +17,7 @@ if (cart.containsKey(product)) {
 } else {
     cart.put(product, 1);
 }
-// DB insert 해야 할 곳
+// DB insert/update 해야 할 곳
 session.setAttribute("cart", cart);
 response.sendRedirect("cart.jsp");
 
