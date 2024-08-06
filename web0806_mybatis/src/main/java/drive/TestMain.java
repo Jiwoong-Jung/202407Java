@@ -16,6 +16,9 @@ public class TestMain {
 		for (DeptDTO dto : list) {
 			System.out.println(dto);
 		}
+		System.out.println("------------------------");
+		DeptDTO dto = dao.searchLoc("BOSTON");
+		System.out.println(dto);
 	}
 
 }

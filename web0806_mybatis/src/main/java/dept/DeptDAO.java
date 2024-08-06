@@ -20,6 +20,10 @@ public class DeptDAO {
 		session = sqlsession_f.openSession(true);
 	}
 	
+	public DeptDTO searchLoc(String loc) {
+		return session.selectOne("Dept.searchLoc", loc);
+	}
+	
 	public int searchDeptno(String name) {
 		//session을 통해 쿼리를 실행하고 값을 받아온다.
 		return session.selectOne("Dept.searchDeptno", name);

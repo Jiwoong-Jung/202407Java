@@ -8,4 +8,7 @@
 	<select id="listDept" resultType="dept.DeptDTO">
 		select * FROM dept
 	</select>
+	<select id="searchLoc" parameterType="string" resultType="dept.DeptDTO">
+		select * from dept where loc = #{loc}
+	</select>
 </mapper>
