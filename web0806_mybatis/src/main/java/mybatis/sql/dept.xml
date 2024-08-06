@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Dept">
+	<select id="searchDeptno" parameterType="string" resultType="_int">
+		select deptno FROM dept WHERE dname = #{name}
+	</select>
+	<select id="listDept" resultType="dept.DeptDTO">
+		select * FROM dept
+	</select>
+</mapper>
