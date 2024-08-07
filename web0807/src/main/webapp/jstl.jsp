@@ -42,6 +42,12 @@ ${sum = 0; ''}
 ${sum = sum + i; ''}
 </c:forEach>
 1부터 10까지의 합: ${sum}
+<!-- 구구단 4단을 출력 JSTL forEach -->
+<ul>
+<c:forEach var="i" begin="1" end="9">
+<li>4 X ${i} = ${4*i}
+</c:forEach>
+</ul>
 </body>
 </html>
 
