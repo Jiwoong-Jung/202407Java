@@ -37,9 +37,20 @@
 </c:forEach>
 <br>
 <!-- 1부터 10까지 더하는 JSTL forEach -->
-${sum = 0}
-${sum = sum + 1}
+${sum = 0; ''}
+<c:forEach var="i" begin="1" end="10">
+${sum = sum + i; ''}
+</c:forEach>
+1부터 10까지의 합: ${sum}
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 
