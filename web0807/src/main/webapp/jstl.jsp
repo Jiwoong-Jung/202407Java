@@ -48,6 +48,11 @@ ${sum = sum + i; ''}
 <li>4 X ${i} = ${4*i}
 </c:forEach>
 </ul>
+<!-- JSTL forEach : 배열 또는 리스트를 순회하는 반복문 -->
+<c:forEach var="data" items="${dataList}">
+    ${data}
+</c:forEach>
+
 </body>
 </html>
 
