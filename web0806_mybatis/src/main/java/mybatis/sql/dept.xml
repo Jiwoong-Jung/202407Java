@@ -11,4 +11,7 @@
 	<select id="searchLoc" parameterType="string" resultType="dept.DeptDTO">
 		select * from dept where loc = #{loc}
 	</select>
+	<insert id="insertDept" parameterType="dept.DeptDTO">
+		insert into dept(deptno, dname, loc) values (#{deptno}, #{dname}, #{loc})
+	</insert>
 </mapper>

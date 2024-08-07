@@ -10,6 +10,9 @@ public class TestMain {
 	public static void main(String[] args) {
 		
 		DeptDAO dao = new DeptDAO();
+		DeptDTO dto1 = new DeptDTO(60, "영업1", "인천");
+		dao.insertDept(dto1);
+		
 		int deptno = dao.searchDeptno("SALES");
 		System.out.println(deptno);
 		List<DeptDTO> list = dao.listDept();

@@ -33,4 +33,7 @@ public class DeptDAO {
 		//session을 통해 쿼리를 실행하고 값을 받아온다.
 		return session.selectList("Dept.listDept");
 	}
+	public void insertDept(DeptDTO dto) {
+		session.insert("Dept.insertDept", dto);
+	}
 }
