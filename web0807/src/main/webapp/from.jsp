@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-request.setAttribute("kk", "김하나");
+request.setAttribute("gugu", "7");
 %>
 <!DOCTYPE html>
 <html>
