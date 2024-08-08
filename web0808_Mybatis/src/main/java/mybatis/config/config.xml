@@ -7,10 +7,10 @@
 		<environment id="development">
 			<transactionManager type="JDBC"/>
 			<dataSource type="POOLED">
-				<property name="driver" value="oracle.jdbc.OracleDriver"/>
-				<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-				<property name="username" value="scott"/>
-				<property name="password" value="tiger"/>
+				<property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://localhost:3307/spring5fs"/>
+				<property name="username" value="root"/>
+				<property name="password" value="mysql"/>
 			</dataSource>				
 		</environment>
 	</environments>
@@ -18,5 +18,6 @@
 	<!-- 참조할 sql이 작성될 xml파일의 위치를 지정해준다. -->
 	<mappers>
 		<mapper resource="mybatis/sql/dept.xml"/>
+		<mapper resource="mybatis/sql/board.xml"/>
 	</mappers>
 </configuration>
