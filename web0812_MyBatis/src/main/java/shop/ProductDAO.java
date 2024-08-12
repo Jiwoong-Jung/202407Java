@@ -37,7 +37,7 @@ public class ProductDAO {
 		session.update("ProductMapper.updateProduct", product);
 	}
 
-//	public void deleteProduct(int id) {
-
-//	}
+	public void deleteProduct(int id) {
+		session.update("ProductMapper.deleteProduct", id);
+	}
 }

@@ -11,16 +11,20 @@
     <select id="selectProductById" parameterType="int" resultType="shop.Product">
         SELECT * FROM products WHERE id = #{id}
     </select>
+    
+    <select id="countProducts" parameterType="int" resultType="int">
+        SELECT count(*) FROM cart WHERE product_id = #{id}
+    </select>
 
-    <insert id="insertProduct" parameterType="shop.Product">
-        INSERT INTO products (name, description, price, stock)
-        VALUES (#{name}, #{description}, #{price}, #{stock})
+    <insert id="addToCart" parameterType="int">
+        INSERT INTO cart (product_id, quantity)
+        VALUES (#{product_id}, 1)
     </insert>
 
-    <update id="updateProduct" parameterType="shop.Product">
-        UPDATE products
-        SET name = #{name}, description = #{description}, price = #{price}, stock = #{stock}
-        WHERE id = #{id}
+    <update id="updateCart" parameterType="int">
+        UPDATE cart
+        SET quantity = quantity + 1
+        WHERE product_id = #{product_id}
     </update>
 
     <delete id="deleteProduct" parameterType="int">

@@ -25,8 +25,16 @@ public class CartDAO {
 		return session.selectList("CartMapper.viewCart");
 	}
 
-	public void addProduct(Product product) {
-		session.insert("ProductMapper.insertProduct", product);
+	public int countProduct(int id) {
+		return session.selectOne("CartMapper.countProducts", id);
+	}
+	public void addToCart(int id) {
+		if (countProduct(id) == 0) {
+			session.insert("CartMapper.addToCart", id);
+		} else {
+			session.update("CartMapper.updateCart", id);
+		}
+		
 	}
 
 	public Product getProductById(int id) {
