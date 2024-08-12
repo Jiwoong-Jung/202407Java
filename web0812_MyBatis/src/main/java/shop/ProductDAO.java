@@ -29,10 +29,9 @@ public class ProductDAO {
 		session.insert("ProductMapper.insertProduct", product);
 	}
 
-//	public Product getProductById(int id) {
-
-//	}
-//
+	public Product getProductById(int id) {
+		return session.selectOne("ProductMapper.selectProductById", id);
+	}
 
 	public void updateProduct(Product product) {
 		session.update("ProductMapper.updateProduct", product);
