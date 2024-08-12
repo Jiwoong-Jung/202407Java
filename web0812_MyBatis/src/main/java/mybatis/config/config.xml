@@ -18,5 +18,6 @@
 	<!-- 참조할 sql이 작성될 xml파일의 위치를 지정해준다. -->
 	<mappers>
 		<mapper resource="mybatis/sql/ProductMapper.xml"/>
+		<mapper resource="mybatis/sql/CartMapper.xml"/>
 	</mappers>
 </configuration>

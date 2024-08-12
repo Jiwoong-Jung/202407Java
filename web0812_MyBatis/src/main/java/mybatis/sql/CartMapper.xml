@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="CartMapper">
-    <select id="viewCart" resultType="shop.Product">
+    <select id="viewCart" resultType="shop.CartProducts">
         SELECT * FROM products p, cart c where p.id = c.product_id
     </select>
 
