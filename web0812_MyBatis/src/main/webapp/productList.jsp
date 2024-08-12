@@ -26,7 +26,7 @@
                 <td>${product.stock}</td>
                 <td>
                     <a href="${pageContext.request.contextPath}/products/${product.id}">View</a>
-                    <a href="${pageContext.request.contextPath}/products/edit/${product.id}">Edit</a>
+                    <a href="${pageContext.request.contextPath}/selectOneForUpdate.jsp?id=${product.id}">Edit</a>
                     <a href="${pageContext.request.contextPath}/products/delete/${product.id}">Delete</a>
                 </td>
             </tr>
