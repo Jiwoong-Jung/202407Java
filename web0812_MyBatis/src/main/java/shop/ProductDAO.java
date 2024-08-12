@@ -34,11 +34,10 @@ public class ProductDAO {
 //	}
 //
 
-//
-//	public void updateProduct(Product product) {
+	public void updateProduct(Product product) {
+		session.update("ProductMapper.updateProduct", product);
+	}
 
-//	}
-//
 //	public void deleteProduct(int id) {
 
 //	}
