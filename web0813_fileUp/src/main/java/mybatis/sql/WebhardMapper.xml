@@ -12,8 +12,8 @@
         SELECT stock FROM products WHERE id = #{id}
     </select>
 
-    <select id="selectProductById" parameterType="int" resultType="webhard.Webhard">
-        SELECT * FROM products WHERE id = #{id}
+    <select id="selectWebhardByNum" parameterType="int" resultType="webhard.Webhard">
+        select * from webhard where num = #{num}
     </select>
 
     <insert id="insertWebhard" parameterType="webhard.Webhard">
@@ -33,7 +33,7 @@
         WHERE id = #{id}
     </update>
 
-    <delete id="deleteProduct" parameterType="int">
-        DELETE FROM products WHERE id = #{id}
+    <delete id="deleteWebhard" parameterType="int">
+       delete from webhard where num = #{num}
     </delete>
 </mapper>

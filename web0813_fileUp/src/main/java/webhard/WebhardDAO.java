@@ -29,24 +29,16 @@ public class WebhardDAO {
 		session.insert("WebhardMapper.insertWebhard", webhard);
 	}
 
-	public Webhard getProductById(int id) {
-		return session.selectOne("ProductMapper.selectProductById", id);
+	public Webhard getWebhardById(int id) {
+		return session.selectOne("WebhardMapper.selectWebhardByNum", id);
 	}
 
 	public void updateProduct(Webhard product) {
 		session.update("ProductMapper.updateProduct", product);
 	}
 
-	public boolean deleteProduct(int id) {
-		try {
-			session.update("ProductMapper.deleteProduct", id);
-		} catch(Exception e) {
-			System.out.println("여기!!!");
-			//e.printStackTrace();
-			return true;
-		}
-		return false;
-		
+	public void deleteWebhard(int id) {
+		session.update("WebhardMapper.deleteWebhard", id);
 	}
 	
 	public void decreaseStock(int id) {
