@@ -168,7 +168,7 @@
       
       
       
-      <Context docBase="web0812_MyBatis" path="/MyBatisShop" reloadable="true" source="org.eclipse.jst.jee.server:web0812_MyBatis"/><Context docBase="web0808_Mybatis" path="/web0808" reloadable="true" source="org.eclipse.jst.jee.server:web0808_Mybatis"/></Host>
+      <Context docBase="web0812_MyBatis" path="/MyBatisShop" reloadable="true" source="org.eclipse.jst.jee.server:web0812_MyBatis"/><Context docBase="web0808_Mybatis" path="/web0808" reloadable="true" source="org.eclipse.jst.jee.server:web0808_Mybatis"/><Context docBase="web0813_fileUp" path="/web0813_fileUp" reloadable="true" source="org.eclipse.jst.jee.server:web0813_fileUp"/></Host>
     </Engine>
   </Service>
 </Server>
