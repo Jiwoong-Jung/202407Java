@@ -12,7 +12,7 @@
     MultipartRequest multi = new MultipartRequest(
             request,
             application.getRealPath("/files"),   // 파일을 저장할 경로
-            100 * 1024 * 1024,                   // 최대 파일 크기 (100MB)
+            1024 * 1024 * 1024,                   // 최대 파일 크기 (100MB)
             "utf-8",                             // 인코딩
             new DefaultFileRenamePolicy()        // 동일 파일명 처리 방법
     );
