@@ -25,8 +25,8 @@ public class WebhardDAO {
 		return session.selectList("WebhardMapper.selectAllWebhard");
 	}
 
-	public void addProduct(Webhard product) {
-		session.insert("ProductMapper.insertProduct", product);
+	public void addWebhard(Webhard webhard) {
+		session.insert("WebhardMapper.insertWebhard", webhard);
 	}
 
 	public Webhard getProductById(int id) {

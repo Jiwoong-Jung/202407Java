@@ -1,3 +1,5 @@
+<%@page import="webhard.Webhard"%>
+<%@page import="webhard.WebhardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
@@ -18,29 +20,15 @@
     File file = multi.getFile("upload");         // 파일 객체 얻기
 
     if (file != null) {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        try (
-            Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3307/spring5fs", "root", "mysql");
-            Statement stmt = conn.createStatement();
-        ) {
+        	WebhardDAO dao = new WebhardDAO();
             // 현재 시간 얻기
             String curTime = LocalDate.now() + " " +
                              LocalTime.now().toString().substring(0, 8);
-
-            // 쿼리 실행
-            stmt.executeUpdate(String.format(
-                "insert into webhard (fname, ftime, fsize) " +
-                "values ('%s', '%s', %d)",
-                file.getName(), curTime, (int)file.length()));
-
-            // 메인 페이지로 돌아가기
+            Webhard webhard = new Webhard(0, file.getName(), curTime, (int)file.length());
+			dao.addWebhard(webhard);
+            
             response.sendRedirect("webhard.jsp");
-            return;
 
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
     }
 
 %>

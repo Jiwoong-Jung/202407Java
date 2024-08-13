@@ -16,9 +16,9 @@
         SELECT * FROM products WHERE id = #{id}
     </select>
 
-    <insert id="insertProduct" parameterType="webhard.Webhard">
-        INSERT INTO products (name, description, price, stock)
-        VALUES (#{name}, #{description}, #{price}, #{stock})
+    <insert id="insertWebhard" parameterType="webhard.Webhard">
+        INSERT into webhard (fname, ftime, fsize) 
+        VALUES (#{fname}, #{ftime}, #{fsize})
     </insert>
 
     <update id="updateProduct" parameterType="webhard.Webhard">
