@@ -8,6 +8,10 @@
         SELECT * FROM products
     </select>
 
+	<select id="countProducts" parameterType="int" resultType="int">
+        SELECT stock FROM products WHERE id = #{id}
+    </select>
+
     <select id="selectProductById" parameterType="int" resultType="shop.Product">
         SELECT * FROM products WHERE id = #{id}
     </select>
@@ -20,6 +24,12 @@
     <update id="updateProduct" parameterType="shop.Product">
         UPDATE products
         SET name = #{name}, description = #{description}, price = #{price}, stock = #{stock}
+        WHERE id = #{id}
+    </update>
+    
+    <update id="decreaseStock" parameterType="int">
+        UPDATE products
+        SET stock = stock - 1
         WHERE id = #{id}
     </update>
 

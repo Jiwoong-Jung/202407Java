@@ -6,6 +6,7 @@ request.setCharacterEncoding("UTF-8");
 String id = request.getParameter("id");
 
 ProductDAO productDAO = new ProductDAO();
-productDAO.deleteProduct(Integer.parseInt(id));
+boolean ret = productDAO.deleteProduct(Integer.parseInt(id));
+request.setAttribute("flag", ret);
 %>
 <jsp:forward page="products.jsp"/>

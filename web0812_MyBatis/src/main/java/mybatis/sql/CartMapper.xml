@@ -12,7 +12,7 @@
         SELECT * FROM products WHERE id = #{id}
     </select>
     
-    <select id="countProducts" parameterType="int" resultType="int">
+    <select id="countOrder" parameterType="int" resultType="int">
         SELECT count(*) FROM cart WHERE product_id = #{id}
     </select>
 

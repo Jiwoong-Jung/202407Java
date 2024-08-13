@@ -168,7 +168,7 @@
       
       
       
-      <Context docBase="web0812_MyBatis" path="/MyBatisShop" reloadable="true" source="org.eclipse.jst.jee.server:web0812_MyBatis"/></Host>
+      <Context docBase="web0812_MyBatis" path="/MyBatisShop" reloadable="true" source="org.eclipse.jst.jee.server:web0812_MyBatis"/><Context docBase="web0808_Mybatis" path="/web0808" reloadable="true" source="org.eclipse.jst.jee.server:web0808_Mybatis"/></Host>
     </Engine>
   </Service>
 </Server>

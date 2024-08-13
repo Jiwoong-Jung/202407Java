@@ -33,5 +33,12 @@
             </tr>
         </c:forEach>
     </table>
+<script type="text/javascript">
+let flag = ${flag};
+if (flag) {
+	alert("선택하신 상품은 삭제하실 수 없습니다.");
+}
+</script>
+
 </body>
 </html>

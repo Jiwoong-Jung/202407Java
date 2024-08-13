@@ -32,5 +32,13 @@
             </tr>
         </c:forEach>
     </table>
+<script>
+let flag = ${flag};
+if (flag) {
+	alert("선택하신 상품은 수량이 부족합니다.");
+	window.location.href = 'products.jsp';
+}
+
+</script>
 </body>
 </html>
