@@ -79,19 +79,23 @@
 			</c:forEach>
 		</table>
 
-		<div style="width: 680px; text-align: center;">
-			<c:forEach var="pgn" items="${pgnList}">
-				<a class="pgn" href="list?page=${pgn.pageNo}"> <c:choose>
-						<c:when test="${pgn.curPage}">
-							<u>${pgn.display}</u>
-						</c:when>
-						<c:otherwise>
-                     ${pgn.display}
-                 </c:otherwise>
-					</c:choose>
-				</a>&nbsp;
-    </c:forEach>
-		</div>
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+				<c:forEach var="pgn" items="${pgnList}">
+					<li class="page-item"><a class="page-link"
+						href="list?page=${pgn.pageNo}"> <c:choose>
+								<c:when test="${pgn.curPage}">
+										<u>${pgn.display}</u>
+									</c:when>
+								<c:otherwise>
+										${pgn.display}
+									</c:otherwise>
+							</c:choose>
+					</a></li>
+				</c:forEach>
+			</ul>
+		</nav>
+
 		<button type="button" class="btn btn-outline-primary"
 			onclick="location.href='write'">글쓰기</button>
 	</div>
