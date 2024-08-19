@@ -8,8 +8,8 @@
 		select count(*) from board
 	</select>
 
-    <select id="selectList" resultType="com.board.db.BoardDto">
-        select * from board order by num desc limit 0, 3
+    <select id="selectList" resultType="com.board.db.BoardDto" parameterType="map">
+        select * from board order by num desc limit #{start}, #{listSize}
     </select>
 
 	<select id="countProducts" parameterType="int" resultType="int">

@@ -1,7 +1,9 @@
 package com.board.db;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -25,9 +27,12 @@ public class BoardDao {
 		return session.selectOne("BoardMapper.getNumRecords");
 	}
 
-	public List<BoardDto> selectList(int a, int b) {
+	public List<BoardDto> selectList(int start, int listSize) {
 		// session을 통해 쿼리를 실행하고 값을 받아온다.
-		return session.selectList("BoardMapper.selectList");
+		Map<String, Integer> map = new HashMap<>();
+		map.put("start", start);
+		map.put("listSize", listSize);
+		return session.selectList("BoardMapper.selectList", map);
 	}
 
 	public void insertOne(BoardDto product) {
