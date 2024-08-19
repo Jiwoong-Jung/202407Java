@@ -12,13 +12,20 @@
         select * from board order by num desc limit #{start}, #{listSize}
     </select>
 
+	<update id="updateHits" parameterType="int">
+        update board set hits=hits+1 where num = #{num}
+    </update>
+
+	<select id="selectOne" parameterType="int" resultType="com.board.db.BoardDto">
+        select * from board where num = #{num}
+    </select>
+
+
 	<select id="countProducts" parameterType="int" resultType="int">
         SELECT stock FROM products WHERE id = #{id}
     </select>
 
-    <select id="selectProductById" parameterType="int" resultType="com.board.db.BoardDto">
-        SELECT * FROM products WHERE id = #{id}
-    </select>
+
 
     <insert id="insertProduct" parameterType="com.board.db.BoardDto">
         INSERT INTO products (name, description, price, stock)
@@ -31,11 +38,7 @@
         WHERE id = #{id}
     </update>
     
-    <update id="decreaseStock" parameterType="int">
-        UPDATE products
-        SET stock = stock - 1
-        WHERE id = #{id}
-    </update>
+    
 
     <delete id="deleteProduct" parameterType="int">
         DELETE FROM products WHERE id = #{id}

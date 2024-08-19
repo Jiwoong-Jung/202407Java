@@ -29,19 +29,28 @@ public class BoardDao {
 
 	public List<BoardDto> selectList(int start, int listSize) {
 		// session을 통해 쿼리를 실행하고 값을 받아온다.
-		Map<String, Integer> map = new HashMap<>();
+		Map<String, Object> map = new HashMap<>();
 		map.put("start", start);
 		map.put("listSize", listSize);
 		return session.selectList("BoardMapper.selectList", map);
 	}
+	
+	private void updateHits(int num) {
+		session.update("BoardMapper.updateHits", num);
+	}
 
+	public BoardDto selectOne(int num, boolean hitsIncreased) {
+		if (hitsIncreased) {
+			updateHits(num);
+		}
+		return session.selectOne("BoardMapper.selectOne", num);
+	}
+	
 	public void insertOne(BoardDto product) {
 		session.insert("ProductMapper.insertProduct", product);
 	}
 
-	public BoardDto selectOne(int id, boolean flag) {
-		return session.selectOne("ProductMapper.selectProductById", id);
-	}
+	
 
 	public void updateOne(BoardDto product) {
 		session.update("ProductMapper.updateProduct", product);
@@ -59,9 +68,7 @@ public class BoardDao {
 		
 	}
 	
-	public void decreaseStock(int id) {
-		session.update("ProductMapper.decreaseStock", id);
-	}
+	
 	
 	public int countProducts(int id) {
 		return session.selectOne("ProductMapper.countProducts", id);
