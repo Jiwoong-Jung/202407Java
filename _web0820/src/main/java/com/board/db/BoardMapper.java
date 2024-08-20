@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface BoardMapper {
-	@Select("select count(*) from board")
+	@Select("select count(*) from dept")
 	int countBoard();
 
 }
