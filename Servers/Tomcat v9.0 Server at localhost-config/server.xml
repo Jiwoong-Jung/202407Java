@@ -168,7 +168,7 @@
       
       
       
-      <Context docBase="JDBC_board" path="/JDBC_board" reloadable="true" source="org.eclipse.jst.jee.server:JDBC_board"/><Context docBase="_mvc0814" path="/_mvc0814" reloadable="true" source="org.eclipse.jst.jee.server:_mvc0814"/><Context docBase="_mvc0819" path="/_mvc0819" reloadable="true" source="org.eclipse.jst.jee.server:_mvc0819"/></Host>
+      <Context docBase="JDBC_board" path="/JDBC_board" reloadable="true" source="org.eclipse.jst.jee.server:JDBC_board"/><Context docBase="_mvc0814" path="/_mvc0814" reloadable="true" source="org.eclipse.jst.jee.server:_mvc0814"/><Context docBase="_mvc0819" path="/_mvc0819" reloadable="true" source="org.eclipse.jst.jee.server:_mvc0819"/><Context docBase="_web0820" path="/_web0820" reloadable="true" source="org.eclipse.jst.jee.server:_web0820"/></Host>
     </Engine>
   </Service>
 </Server>
