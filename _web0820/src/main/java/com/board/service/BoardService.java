@@ -8,10 +8,10 @@ import com.board.db.*;
 public class BoardService {
 
     private static final int listSize = 3;
-    private static final int paginationSize = 2;
+    private static final int paginationSize = 3;
 
     public List<BoardDto> getMsgList(int pageNo) {
-       return new BoardDao().selectList((pageNo - 1) * listSize, listSize);
+       return new BoardDao().selectList((pageNo - 1) * listSize+1, listSize);
     }
 
     public ArrayList<Pagination> getPagination(int pageNo) {

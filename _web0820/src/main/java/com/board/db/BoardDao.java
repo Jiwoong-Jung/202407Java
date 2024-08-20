@@ -31,7 +31,7 @@ public class BoardDao {
 		// session을 통해 쿼리를 실행하고 값을 받아온다.
 		Map<String, Object> map = new HashMap<>();
 		map.put("start", start);
-		map.put("listSize", listSize);
+		map.put("listSize", start + listSize - 1);
 		return session.selectList("BoardMapper.selectList", map);
 	}
 	

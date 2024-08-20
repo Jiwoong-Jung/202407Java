@@ -17,7 +17,7 @@
 	
 	<!-- 참조할 sql이 작성될 xml파일의 위치를 지정해준다. -->
 	<mappers>
-		<!-- <mapper resource="mybatis/sql/BoardMapper.xml"/>  -->
+		<mapper resource="mybatis/sql/BoardMapper.xml"/>
 		<mapper class="com.board.db.BoardMapper" />
 	</mappers>
 </configuration>
