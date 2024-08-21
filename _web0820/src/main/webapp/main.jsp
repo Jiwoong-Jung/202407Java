@@ -23,7 +23,7 @@
                 <li><a href="#">DEPARTMENT</a></li>
                 <li><a href="#">GALLERY</a></li>
                 <li><a href="#">YOUTUBE</a></li>
-                <li><a href="#">COMMUNITY</a></li>
+                <li><a href="${pageContext.request.contextPath}/list">게시판</a></li>
                 <li><a href="#">LOCATION</a></li>
             </ul>
 

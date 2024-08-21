@@ -32,7 +32,10 @@ public class BoardController extends HttpServlet {
         String com = uri.substring(conPath.length());
 
         // 주어진 URL에 따라 지정된 동작 수행
-        if (com.equals("/list") || com.equals("/")) {
+        if (com.equals("/")){
+            view = "main.jsp";
+        } 
+        if (com.equals("/list")) {
             String tmp = request.getParameter("page");
             int pageNo = (tmp != null && tmp.length() > 0)
                     ? Integer.parseInt(tmp) : 1;
@@ -103,9 +106,7 @@ public class BoardController extends HttpServlet {
 
             new BoardService().deleteMsg(num);
             view = "redirect:list";
-        } else if (com.equals("/main")){
-            view = "main.jsp";
-        } 
+        }
 
         // view에 담긴 문자열에 따라 포워딩 또는 리다이렉팅
         if (view.startsWith("redirect:")) {
