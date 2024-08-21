@@ -103,7 +103,9 @@ public class BoardController extends HttpServlet {
 
             new BoardService().deleteMsg(num);
             view = "redirect:list";
-        }
+        } else if (com.equals("/main")){
+            view = "main.jsp";
+        } 
 
         // view에 담긴 문자열에 따라 포워딩 또는 리다이렉팅
         if (view.startsWith("redirect:")) {
