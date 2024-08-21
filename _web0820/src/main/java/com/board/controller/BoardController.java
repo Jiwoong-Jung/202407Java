@@ -34,8 +34,9 @@ public class BoardController extends HttpServlet {
         // 주어진 URL에 따라 지정된 동작 수행
         if (com.equals("/")){
             view = "main.jsp";
-        } 
-        if (com.equals("/list")) {
+        } else if (com.equals("/loginForm")) {
+        	view = "/sign-in/loginForm.jsp";
+        } else if (com.equals("/list")) {
             String tmp = request.getParameter("page");
             int pageNo = (tmp != null && tmp.length() > 0)
                     ? Integer.parseInt(tmp) : 1;

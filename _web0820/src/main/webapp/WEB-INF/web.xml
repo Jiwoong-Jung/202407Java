@@ -10,6 +10,7 @@
 		<url-pattern>*.ico</url-pattern>
 		<url-pattern>*.swf</url-pattern>
 		<url-pattern>*.mp4</url-pattern>
+		<url-pattern>*.svg</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>

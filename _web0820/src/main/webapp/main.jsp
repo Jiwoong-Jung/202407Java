@@ -30,7 +30,7 @@
             <ul class="util">
                 <li><a href="#">Contact</a></li>
                 <li><a href="#">Help</a></li>
-                <li><a href="#">Login</a></li>
+                <li><a href="${pageContext.request.contextPath}/loginForm">Login</a></li>
                 <li><a href="#">Join</a></li>
                 <li><a href="#">Sitemap</a></li>
             </ul>
