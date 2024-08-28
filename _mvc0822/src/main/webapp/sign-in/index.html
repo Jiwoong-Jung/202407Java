@@ -1,8 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-  <head><script src="${pageContext.request.contextPath}/assets/js/color-modes.js"></script>
+  <head><script src="../assets/js/color-modes.js"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +15,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="${pageContext.request.contextPath}/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -100,7 +98,7 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="${pageContext.request.contextPath}/sign-in/sign-in.css" rel="stylesheet">
+    <link href="sign-in.css" rel="stylesheet">
   </head>
   <body class="d-flex align-items-center py-4 bg-body-tertiary">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -156,16 +154,16 @@
 
     
 <main class="form-signin w-100 m-auto">
-  <form method="post" action="${pageContext.request.contextPath}/login">
-    <img class="mb-4" src="${pageContext.request.contextPath}/assets/brand/door-open.svg" alt="" width="72" height="57">
+  <form>
+    <img class="mb-4" src="../assets/brand/door-open.svg" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
     <div class="form-floating">
-      <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
       <label for="floatingInput">Email address</label>
     </div>
     <div class="form-floating">
-      <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
       <label for="floatingPassword">Password</label>
     </div>
 
@@ -179,7 +177,7 @@
     <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2024</p>
   </form>
 </main>
-<script src="${pageContext.request.contextPath}/assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
     </body>
 </html>

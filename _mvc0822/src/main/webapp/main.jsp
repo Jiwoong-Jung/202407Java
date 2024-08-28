@@ -33,7 +33,7 @@
 
 			<ul class="util">
 				<c:if test="${userLoggedIn}">
-					<li><a href="#">${customInfo.name}님, logout</a></li>
+					<li><a href="#">${customInfo.name}님, Logout</a></li>
 				</c:if>
 				<c:if test="${!userLoggedIn}">
 					<li><a href="${pageContext.request.contextPath}/loginForm">Login</a></li>

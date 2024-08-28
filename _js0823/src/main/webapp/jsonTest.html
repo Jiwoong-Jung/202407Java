@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Board</title>
+</head>
+<body>
+    <h1>Simple Board</h1>
+    <div>
+        <h2>Create Post</h2>
+        <input type="text" id="title" placeholder="Title">
+        <textarea id="content" placeholder="Content"></textarea>
+        <button onclick="createPost()">Create</button>
+    </div>
+    <div>
+        <h2>Posts</h2>
+        <div id="posts"></div>
+    </div>
+
+    <script>
+        const apiUrl = 'http://localhost:3000/posts';
+
+        // Create
+        async function createPost() {
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ title, content })
+            });
+            const data = await response.json();
+            console.log('Post created:', data);
+            getPosts();
+        }
+
+        // Read
+        async function getPosts() {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+            const postsDiv = document.getElementById('posts');
+            postsDiv.innerHTML = '';
+            data.forEach(post => {
+                postsDiv.innerHTML += `
+                    <div>
+                        <h3>${post.title}</h3>
+                        <p>${post.content}</p>
+                        <button onclick="deletePost(${post.id})">Delete</button>
+                        <button onclick="updatePost(${post.id})">Update</button>
+                    </div>
+                `;
+            });
+        }
+
+        // Update
+        async function updatePost(id) {
+            const title = prompt('Enter new title:');
+            const content = prompt('Enter new content:');
+
+            const response = await fetch(`${apiUrl}/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ title, content })
+            });
+            const data = await response.json();
+            console.log('Post updated:', data);
+            getPosts();
+        }
+
+        // Delete
+        async function deletePost(id) {
+            const response = await fetch(`${apiUrl}/${id}`, {
+                method: 'DELETE'
+            });
+            console.log('Post deleted:', response.status);
+            getPosts();
+        }
+
+        // Initial load
+        getPosts();
+    </script>
+</body>
+</html>

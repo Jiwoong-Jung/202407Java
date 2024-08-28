@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BoardMapper">
+	<select id="getNumRecords" resultType="int">
+		select count(*) from board
+	</select>
+
+	<select id="selectList" resultType="du.db.BoardDto" parameterType="map">
+	<![CDATA[
+		SELECT *
+		FROM
+		(SELECT ROWNUM AS RNUM, T1.*
+		   FROM (select * from board order by num) T1
+		  WHERE
+		 ROWNUM <= #{listSize}
+		)
+		WHERE #{start} <= RNUM
+	]]>
+	</select>
+
+	<update id="updateHits" parameterType="int">
+		update board set hits=hits+1 where num = #{num}
+	</update>
+
+	<select id="selectOne" parameterType="int"
+		resultType="du.db.BoardDto">
+		select * from board where num = #{num}
+	</select>
+
+
+	<select id="countProducts" parameterType="int" resultType="int">
+		SELECT stock FROM products WHERE id = #{id}
+	</select>
+
+
+
+	<insert id="insertProduct" parameterType="du.db.BoardDto">
+		INSERT INTO products (name, description, price, stock)
+		VALUES (#{name}, #{description}, #{price}, #{stock})
+	</insert>
+
+	<update id="updateProduct" parameterType="du.db.BoardDto">
+		UPDATE products
+		SET name = #{name}, description = #{description}, price = #{price}, stock
+		= #{stock}
+		WHERE id = #{id}
+	</update>
+
+
+
+	<delete id="deleteProduct" parameterType="int">
+		DELETE FROM products WHERE id = #{id}
+	</delete>
+</mapper>

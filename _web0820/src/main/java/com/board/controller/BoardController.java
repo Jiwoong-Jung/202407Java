@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.board.db.*;
 import com.board.service.BoardService;
@@ -36,6 +37,25 @@ public class BoardController extends HttpServlet {
             view = "main.jsp";
         } else if (com.equals("/loginForm")) {
         	view = "/sign-in/loginForm.jsp";
+        } else if (com.equals("/login")) {
+        	request.setCharacterEncoding("utf-8");
+        	String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            System.out.println(email+password);
+            MemberDto memberDto = new MemberDto(0, "", email, password, "");
+            MemberDao memberDao = new MemberDao();
+            int login = memberDao.isMember(memberDto);
+            if (login == 1) {
+            	System.out.println("로그인 성공!");
+            	memberDto = memberDao.findMember(memberDto);
+            	System.out.println(memberDto);
+            	HttpSession session = request.getSession();    //세션 객체 생성
+            	session.setAttribute("customInfo", memberDto);  //세션에 값 담기
+            	request.setAttribute("userLoggedIn", true);
+            } else {
+            	System.out.println("로그인 실패!");
+            }
+            view = "main.jsp";
         } else if (com.equals("/list")) {
             String tmp = request.getParameter("page");
             int pageNo = (tmp != null && tmp.length() > 0)

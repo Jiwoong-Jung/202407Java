@@ -168,7 +168,7 @@
       
       
       
-      <Context docBase="_web0820" path="/_web0820" reloadable="true" source="org.eclipse.jst.jee.server:_web0820"/></Host>
+      <Context docBase="_web0820" path="/_web0820" reloadable="true" source="org.eclipse.jst.jee.server:_web0820"/><Context docBase="_mvc0822" path="/_mvc0822" reloadable="true" source="org.eclipse.jst.jee.server:_mvc0822"/><Context docBase="_js0823" path="/_js0823" reloadable="true" source="org.eclipse.jst.jee.server:_js0823"/><Context docBase="_web0828" path="/_web0828" reloadable="true" source="org.eclipse.jst.jee.server:_web0828"/></Host>
     </Engine>
   </Service>
 </Server>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>React Start</title>
+        <!--react cdn-->
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+        <!--babel cdn-->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    </head>
+    <body>
+        <!--기본 div root 생성-->
+        <div id="root"></div>
+
+        <script type="text/babel">
+            //Counter 컴포넌트 생성
+            const Counter = () => {
+                //useState 사용하여, 변수 및 Setter 생성
+                // const [count, setCount] = React.useState(0) //count의 기본 값 0
+                const state = React.useState(0);
+                const count = state[0];
+                const setCount = state[1];
+
+                //onClick, count 값을 현재의 값에서 1을 더한 것으로 SET
+                const onClick = () => {
+                    setCount((current) => current + 1)
+                }
+
+                //JSX Return
+                return (
+                    <div>
+                        <button onClick = {onClick}>Click</button> 
+                        <h1>Total : {count}</h1>
+                    </div>
+                )
+            }
+
+            //ReactDom을 이용하여, root Div에 Counter Render
+            ReactDOM.render(
+                <Counter />, document.getElementById("root")
+            )
+        </script>
+        </body>
+</html>

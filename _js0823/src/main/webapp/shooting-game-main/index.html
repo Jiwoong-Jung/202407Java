@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="score">Score: 0</div>
+    <article id="box"></article>
+    <img id="aircraft2" src="images.png" alt="Aircraft2"
+        style="position: absolute; top: 10%; left: 10%; transform: translate(-50%, -50%); width: 100px; height: 100px;">
+
+    <img id="aircraft" src="aircraft3.png" alt="Aircraft"
+        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 100px;">
+    <script>
+        let score = 0;
+        function updateScore() {
+            score++;
+            document.getElementById('score').textContent = `Score: ${score}`;
+        }
+        const box = document.querySelector("#box");
+        const aircraft = document.getElementById('aircraft');
+        const aircraft2 = document.getElementById('aircraft2');
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            let topPosition = 50;
+            let leftPosition = 50;
+
+            document.addEventListener('keydown', (event) => {
+                const step = 3; // Movement step in pixels
+
+                switch (event.key) {
+                    case 'ArrowUp':
+                        topPosition -= step;
+                        break;
+                    case 'ArrowDown':
+                        topPosition += step;
+                        break;
+                    case 'ArrowLeft':
+                        leftPosition -= step;
+                        break;
+                    case 'ArrowRight':
+                        leftPosition += step;
+                        break;
+                    case ' ':
+                        fireBullet();
+                        break;
+                }
+
+                aircraft.style.top = `${topPosition}%`;
+                aircraft.style.left = `${leftPosition}%`;
+                aircraft.style.transform = 'translate(-50%, -50%)';
+            });
+
+            function fireBullet() {
+                const bullet = document.createElement('div');
+                bullet.className = 'bullet';
+                bullet.style.top = `${topPosition}%`;
+                bullet.style.left = `${leftPosition}%`;
+                box.appendChild(bullet);
+
+                let bulletInterval = setInterval(() => {
+                    let bulletTop = parseFloat(bullet.style.top);
+                    bulletTop -= 1; // Move bullet upwards
+                    bullet.style.top = `${bulletTop}%`;
+
+                    if (bulletTop < 0) {
+                        clearInterval(bulletInterval);
+                        bullet.remove();
+                    }
+
+                    // Check for collision with aircraft2
+                    if (isCollision(bullet, aircraft2)) {
+                        clearInterval(bulletInterval);
+                        bullet.remove();
+                        explode(aircraft2);
+                        
+                    }
+                }, 10);
+            }
+
+            function isCollision(bullet, aircraft) {
+                const bulletRect = bullet.getBoundingClientRect();
+                const aircraftRect = aircraft.getBoundingClientRect();
+
+                return !(
+                    bulletRect.top > aircraftRect.bottom ||
+                    bulletRect.bottom < aircraftRect.top ||
+                    bulletRect.left > aircraftRect.right ||
+                    bulletRect.right < aircraftRect.left
+                );
+            }
+
+            function explode(element) {
+                const rect = element.getBoundingClientRect();
+                const fragmentCount = 20; // Number of fragments
+                for (let i = 0; i < fragmentCount; i++) {
+                    const fragment = document.createElement('div');
+                    fragment.className = 'fragment';
+                    fragment.style.left = `${rect.left + rect.width / 2}px`;
+                    fragment.style.top = `${rect.top + rect.height / 2}px`;
+                    fragment.style.setProperty('--x', `${Math.random() * 200 - 100}px`);
+                    fragment.style.setProperty('--y', `${Math.random() * 200 - 100}px`);
+                    document.body.appendChild(fragment);
+
+                    setTimeout(() => {
+                        fragment.remove();
+                    }, 1000); // Remove fragment after animation
+                    updateScore();
+                }
+
+                element.classList.add('explode');
+                setTimeout(() => {
+                    // element.remove();
+                    element.style.visibility = 'hidden';
+                    setTimeout(resetAircraft2, 2000);
+                }, 1000); // Remove element after explosion animation
+            }
+
+            // Move aircraft2 left and right periodically
+            let direction = 1; // 1 for right, -1 for left
+            setInterval(() => {
+                let left = parseFloat(aircraft2.style.left);
+                left += direction * 1; // Move 1% per interval
+                if (left > 90 || left < 10) {
+                    direction *= -1; // Change direction
+                }
+                aircraft2.style.left = `${left}%`;
+            }, 50); // Adjust the interval time as needed
+
+            function resetAircraft2() {
+                const newAircraft2 = document.createElement('img');
+                newAircraft2.id = 'aircraft2';
+                newAircraft2.src = 'images.png'; // Update with the correct path to your image
+                newAircraft2.alt = 'Aircraft2';
+                newAircraft2.style.position = 'absolute';
+                newAircraft2.style.top = '10%';
+                newAircraft2.style.left = '10%';
+                newAircraft2.style.transform = 'translate(-50%, -50%)';
+                newAircraft2.style.width = '100px';
+                newAircraft2.style.height = '100px';
+                // document.body.appendChild(newAircraft2);
+                aircraft2.style.visibility = 'visible'; 
+
+                // Restart the movement of the new aircraft2
+                let direction = 1; // 1 for right, -1 for left
+                setInterval(() => {
+                    let left = parseFloat(newAircraft2.style.left);
+                    left += direction * 1; // Move 1% per interval
+                    if (left > 90 || left < 10) {
+                        direction *= -1; // Change direction
+                    }
+                    newAircraft2.style.left = `${left}%`;
+                }, 50); // Adjust the interval time as needed
+            }
+        });
+    </script>
+</body>
+
+</html>
