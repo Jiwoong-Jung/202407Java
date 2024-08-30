@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Example with Vue.js</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Vue.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <!-- Axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app" class="container mt-5">
+        <h1 class="text-center">CRUD Example with Vue.js</h1>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h2>Create Item</h2>
+                <div class="form-group">
+                    <input type="text" v-model="createName" class="form-control" placeholder="Item Name">
+                </div>
+                <button class="btn btn-primary" @click="createItem">Create</button>
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h2>Read Items</h2>
+                <button class="btn btn-secondary" @click="getAllItems">Get All Items</button>
+                <ul class="list-group mt-3">
+                    <li v-for="item in items" :key="item.id" class="list-group-item">
+                        ID: {{ item.id }}, Name: {{ item.name }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h2>Update Item</h2>
+                <div class="form-group">
+                    <input type="number" v-model="updateId" class="form-control" placeholder="Item ID">
+                </div>
+                <div class="form-group">
+                    <input type="text" v-model="updateName" class="form-control" placeholder="New Item Name">
+                </div>
+                <button class="btn btn-warning" @click="updateItem">Update</button>
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h2>Delete Item</h2>
+                <div class="form-group">
+                    <input type="number" v-model="deleteId" class="form-control" placeholder="Item ID">
+                </div>
+                <button class="btn btn-danger" @click="deleteItem">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                createName: '',
+                updateId: '',
+                updateName: '',
+                deleteId: '',
+                items: []
+            },
+            methods: {
+                createItem() {
+                    axios.post('/api/items', { name: this.createName })
+                        .then(response => {
+                            alert(`Created item: ${response.data.name} with ID: ${response.data.id}`);
+                            this.createName = '';
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                },
+                getAllItems() {
+                    axios.get('/api/items')
+                        .then(response => {
+                            this.items = response.data;
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                },
+                updateItem() {
+                    axios.put(`/api/items/${this.updateId}`, { name: this.updateName })
+                        .then(response => {
+                            alert(response.data.message);
+                            this.updateId = '';
+                            this.updateName = '';
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                },
+                deleteItem() {
+                    axios.delete(`/api/items/${this.deleteId}`)
+                        .then(response => {
+                            alert(response.data.message);
+                            this.deleteId = '';
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Example with jQuery</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">CRUD Example with jQuery</h1>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h2>Create Item</h2>
+                <div class="form-group">
+                    <input type="text" id="createName" class="form-control" placeholder="Item Name">
+                </div>
+                <button class="btn btn-primary" id="createButton">Create</button>
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h2>Read Items</h2>
+                <button class="btn btn-secondary" id="getAllButton">Get All Items</button>
+                <ul id="itemsList" class="list-group mt-3"></ul>
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h2>Update Item</h2>
+                <div class="form-group">
+                    <input type="number" id="updateId" class="form-control" placeholder="Item ID">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="updateName" class="form-control" placeholder="New Item Name">
+                </div>
+                <button class="btn btn-warning" id="updateButton">Update</button>
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h2>Delete Item</h2>
+                <div class="form-group">
+                    <input type="number" id="deleteId" class="form-control" placeholder="Item ID">
+                </div>
+                <button class="btn btn-danger" id="deleteButton">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        const apiUrl = '/api/items';
+
+        $(document).ready(function() {
+            $('#createButton').click(function() {
+                const name = $('#createName').val();
+                $.ajax({
+                    url: apiUrl,
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ name }),
+                    success: function(newItem) {
+                        alert(`Created item: ${newItem.name} with ID: ${newItem.id}`);
+                    }
+                });
+            });
+
+            $('#getAllButton').click(function() {
+                $.ajax({
+                    url: apiUrl,
+                    method: 'GET',
+                    success: function(items) {
+                        const itemsList = $('#itemsList');
+                        itemsList.empty();
+                        items.forEach(item => {
+                            const li = $('<li>').addClass('list-group-item').text(`ID: ${item.id}, Name: ${item.name}`);
+                            itemsList.append(li);
+                        });
+                    }
+                });
+            });
+
+            $('#updateButton').click(function() {
+                const id = $('#updateId').val();
+                const name = $('#updateName').val();
+                $.ajax({
+                    url: `${apiUrl}/${id}`,
+                    method: 'PUT',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ name }),
+                    success: function(response) {
+                        alert(response.message);
+                    }
+                });
+            });
+
+            $('#deleteButton').click(function() {
+                const id = $('#deleteId').val();
+                $.ajax({
+                    url: `${apiUrl}/${id}`,
+                    method: 'DELETE',
+                    success: function(response) {
+                        alert(response.message);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

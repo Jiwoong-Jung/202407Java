@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management</title>
+</head>
+<body>
+    <h1>Employee Management</h1>
+    
+    <h2>Create Employee</h2>
+    <form id="createForm">
+        <input type="hidden" name="action" value="create">
+        <label for="ename">Name:</label>
+        <input type="text" id="ename" name="ename" required><br>
+        <label for="job">Job:</label>
+        <input type="text" id="job" name="job" required><br>
+        <label for="mgr">Manager:</label>
+        <input type="number" id="mgr" name="mgr" required><br>
+        <label for="hiredate">Hire Date:</label>
+        <input type="date" id="hiredate" name="hiredate" required><br>
+        <label for="sal">Salary:</label>
+        <input type="number" id="sal" name="sal" required><br>
+        <label for="comm">Commission:</label>
+        <input type="number" id="comm" name="comm" required><br>
+        <label for="deptId">Department ID:</label>
+        <input type="number" id="deptno" name="deptno" required><br>
+        <button type="submit">Create</button>
+    </form>
+
+    <h2>Read Employees</h2>
+    <button id="readButton">Read All Employees</button>
+    <div id="readResult"></div>
+
+    <h2>Update Employee</h2>
+    <form id="updateForm">
+        <input type="hidden" name="action" value="update">
+        <label for="updateId">ID:</label>
+        <input type="number" id="updateId" name="id" required><br>
+        <label for="updateName">Name:</label>
+        <input type="text" id="updateName" name="name" required><br>
+        <label for="updateJob">Job:</label>
+        <input type="text" id="updateJob" name="job" required><br>
+        <label for="updateManager">Manager:</label>
+        <input type="number" id="updateManager" name="manager" required><br>
+        <label for="updateHireDate">Hire Date:</label>
+        <input type="date" id="updateHireDate" name="hireDate" required><br>
+        <label for="updateSalary">Salary:</label>
+        <input type="number" id="updateSalary" name="salary" required><br>
+        <label for="updateCommission">Commission:</label>
+        <input type="number" id="updateCommission" name="commission" required><br>
+        <label for="updateDeptId">Department ID:</label>
+        <input type="number" id="updateDeptId" name="deptId" required><br>
+        <button type="submit">Update</button>
+    </form>
+
+    <h2>Delete Employee</h2>
+    <form id="deleteForm">
+        <input type="hidden" name="action" value="delete">
+        <label for="deleteId">ID:</label>
+        <input type="number" id="deleteId" name="id" required><br>
+        <button type="submit">Delete</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시판</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <div id="app" class="container mt-5">
+    <h1 class="mb-4">게시판</h1>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>내용</th>
+          <th>작성자</th>
+          <th>작성일자</th>
+          <th>작성시간</th>
+          <th>액션</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(post, index) in posts" :key="post.id" :data-id="post.id" @click="showPostDetail(post.id)">
+          <td>{{ (currentPage - 1) * postsPerPage + index + 1 }}</td>
+          <td>{{ post.title }}</td>
+          <td>{{ post.content }}</td>
+          <td>{{ post.author }}</td>
+          <td>{{ new Date(post.date).toLocaleDateString() }}</td>
+          <td>{{ new Date(post.date).toLocaleTimeString() }}</td>
+          <td>
+            <button class="btn btn-warning btn-sm" @click.stop="editPost(post.id)">수정</button>
+            <button class="btn btn-danger btn-sm" @click.stop="deletePost(post.id)">삭제</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <nav>
+      <ul class="pagination">
+        <li class="page-item">
+          <button class="page-link" @click="prevPage">이전</button>
+        </li>
+        <li class="page-item">
+          <span class="page-link">{{ `페이지 ${currentPage} / ${totalPages}` }}</span>
+        </li>
+        <li class="page-item">
+          <button class="page-link" @click="nextPage">다음</button>
+        </li>
+      </ul>
+    </nav>
+    <h2 class="mt-5">새 게시물 작성</h2>
+    <form @submit.prevent="submitPost">
+      <input type="hidden" v-model="postId" />
+      <div class="form-group">
+        <label for="title">제목:</label>
+        <input type="text" id="title" class="form-control" v-model="title" required />
+      </div>
+      <div class="form-group">
+        <label for="content">내용:</label>
+        <textarea id="content" class="form-control" v-model="content" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="author">작성자:</label>
+        <input type="text" id="author" class="form-control" v-model="author" required />
+      </div>
+      <button type="submit" class="btn btn-primary">저장</button>
+    </form>
+    <div id="postDetail" class="mt-5" v-if="postDetail">
+      <h3>{{ postDetail.title }}</h3>
+      <p>{{ postDetail.content }}</p>
+      <p>작성자: {{ postDetail.author }}</p>
+      <p>작성일: {{ new Date(postDetail.date).toLocaleString() }}</p>
+    </div>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        posts: [],
+        currentPage: 1,
+        postsPerPage: 5,
+        totalPages: 0,
+        postId: '',
+        title: '',
+        content: '',
+        author: '',
+        postDetail: null
+      },
+      methods: {
+        async fetchPosts(page = 1) {
+          const response = await axios.get(`http://localhost:3000/posts`, {
+            params: {
+              _page: page,
+              _limit: this.postsPerPage,
+              _sort: 'date',
+              _order: 'desc'
+            }
+          });
+          this.posts = response.data;
+          const totalPosts = response.headers['x-total-count'];
+          this.totalPages = Math.ceil(totalPosts / this.postsPerPage);
+          this.currentPage = page;
+        },
+        async showPostDetail(id) {
+          const response = await axios.get(`http://localhost:3000/posts/${id}`);
+          this.postDetail = response.data;
+        },
+        async addPost(post) {
+          await axios.post('http://localhost:3000/posts', post);
+          this.fetchPosts(this.currentPage);
+        },
+        async updatePost(id, post) {
+          await axios.put(`http://localhost:3000/posts/${id}`, post);
+          this.fetchPosts(this.currentPage);
+        },
+        async deletePost(id) {
+          await axios.delete(`http://localhost:3000/posts/${id}`);
+          this.fetchPosts(this.currentPage);
+        },
+        editPost(id) {
+          const post = this.posts.find(post => post.id === id);
+          this.postId = post.id;
+          this.title = post.title;
+          this.content = post.content;
+          this.author = post.author;
+        },
+        async submitPost() {
+          const post = {
+            title: this.title,
+            content: this.content,
+            author: this.author,
+            date: new Date().toISOString()
+          };
+          if (this.postId) {
+            await this.updatePost(this.postId, post);
+          } else {
+            await this.addPost(post);
+          }
+          this.resetForm();
+        },
+        resetForm() {
+          this.postId = '';
+          this.title = '';
+          this.content = '';
+          this.author = '';
+        },
+        prevPage() {
+          if (this.currentPage > 1) {
+            this.fetchPosts(this.currentPage - 1);
+          }
+        },
+        nextPage() {
+          if (this.currentPage < this.totalPages) {
+            this.fetchPosts(this.currentPage + 1);
+          }
+        }
+      },
+      mounted() {
+        this.fetchPosts();
+      }
+    });
+  </script>
+</body>
+</html>

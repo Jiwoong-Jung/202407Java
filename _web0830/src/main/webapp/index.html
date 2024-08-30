@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Employee Management</h1>
+        
+        <h2>Create Employee</h2>
+        <form id="createForm" class="mb-4">
+            <input type="hidden" name="action" value="create">
+            <div class="form-group">
+                <label for="ename">Name:</label>
+                <input type="text" class="form-control" id="ename" name="ename" required>
+            </div>
+            <div class="form-group">
+                <label for="job">Job:</label>
+                <input type="text" class="form-control" id="job" name="job" required>
+            </div>
+            <div class="form-group">
+                <label for="mgr">Manager:</label>
+                <input type="number" class="form-control" id="mgr" name="mgr" required>
+            </div>
+            <div class="form-group">
+                <label for="hiredate">Hire Date:</label>
+                <input type="date" class="form-control" id="hiredate" name="hiredate" required>
+            </div>
+            <div class="form-group">
+                <label for="sal">Salary:</label>
+                <input type="number" class="form-control" id="sal" name="sal" required>
+            </div>
+            <div class="form-group">
+                <label for="comm">Commission:</label>
+                <input type="number" class="form-control" id="comm" name="comm" required>
+            </div>
+            <div class="form-group">
+                <label for="deptno">Department ID:</label>
+                <input type="number" class="form-control" id="deptno" name="deptno" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+
+        <h2>Read Employees</h2>
+        <button id="readButton" class="btn btn-info mb-4">Read All Employees</button>
+        <div id="readResult" class="mb-4"></div>
+
+        <h2>Update Employee</h2>
+        <form id="updateForm" class="mb-4">
+            <input type="hidden" name="action" value="update">
+            <div class="form-group">
+                <label for="updateEmpno">ID:</label>
+                <input type="number" class="form-control" id="updateEmpno" name="empno" required>
+            </div>
+            <div class="form-group">
+                <label for="updateEname">Name:</label>
+                <input type="text" class="form-control" id="updateEname" name="ename" required>
+            </div>
+            <div class="form-group">
+                <label for="updateJob">Job:</label>
+                <input type="text" class="form-control" id="updateJob" name="job" required>
+            </div>
+            <div class="form-group">
+                <label for="updateManager">Manager:</label>
+                <input type="number" class="form-control" id="updateManager" name="mgr" required>
+            </div>
+            <div class="form-group">
+                <label for="updateHireDate">Hire Date:</label>
+                <input type="date" class="form-control" id="updateHireDate" name="hiredate" required>
+            </div>
+            <div class="form-group">
+                <label for="updateSalary">Salary:</label>
+                <input type="number" class="form-control" id="updateSalary" name="sal" required>
+            </div>
+            <div class="form-group">
+                <label for="updateCommission">Commission:</label>
+                <input type="number" class="form-control" id="updateCommission" name="comm" required>
+            </div>
+            <div class="form-group">
+                <label for="updateDeptno">Department ID:</label>
+                <input type="number" class="form-control" id="updateDeptno" name="deptno" required>
+            </div>
+            <button type="submit" class="btn btn-warning">Update</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script1.js"></script>
+</body>
+</html>
