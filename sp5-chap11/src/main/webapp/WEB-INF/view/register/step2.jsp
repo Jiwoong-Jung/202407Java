@@ -10,6 +10,8 @@
     <h2><spring:message code="member.info" /></h2>
     <form:form action="step3" modelAttribute="registerRequest">
     <p>
+    <form:errors />
+    <p>
         <label><spring:message code="email" />:<br>
         <form:input path="email" />
         <form:errors path="email"/>
