@@ -69,7 +69,7 @@
             },
             methods: {
                 createItem() {
-                    axios.post('/api/items', { name: this.createName })
+                    axios.post('/_web0830_2/api/items', { name: this.createName })
                         .then(response => {
                             alert(`Created item: ${response.data.name} with ID: ${response.data.id}`);
                             this.createName = '';
@@ -79,7 +79,7 @@
                         });
                 },
                 getAllItems() {
-                    axios.get('/api/items')
+                    axios.get('/_web0830_2/api/items')
                         .then(response => {
                             this.items = response.data;
                         })
@@ -88,7 +88,7 @@
                         });
                 },
                 updateItem() {
-                    axios.put(`/api/items/${this.updateId}`, { name: this.updateName })
+                    axios.put(`/_web0830_2/api/items/${this.updateId}`, { name: this.updateName })
                         .then(response => {
                             alert(response.data.message);
                             this.updateId = '';
@@ -99,7 +99,7 @@
                         });
                 },
                 deleteItem() {
-                    axios.delete(`/api/items/${this.deleteId}`)
+                    axios.delete(`/_web0830_2/api/items/${this.deleteId}`)
                         .then(response => {
                             alert(response.data.message);
                             this.deleteId = '';
